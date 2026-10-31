@@ -528,6 +528,14 @@
 	font-weight: 600;
 	margin: 0.3rem 0;
 }
+.study-guide ol.rv-options {
+	list-style: upper-alpha;
+	padding-left: 1.6rem;
+	margin: 0.35rem 0 0.4rem;
+}
+.study-guide ol.rv-options li {
+	margin: 0.15rem 0;
+}
 .study-guide .rv-ex,
 .study-guide .rv-cite {
 	color: var(--muted-foreground);

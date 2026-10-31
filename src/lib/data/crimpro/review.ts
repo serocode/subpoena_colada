@@ -6,6 +6,7 @@
 import { badge, box, dl, h3, h4, numberPractice, ol, p, slug, table, ul, type Practice, type RuleChapter } from './model';
 import { allCases } from './cases';
 import { mockItems } from './integrated';
+import { quizzes } from './quizzes';
 import { prescriptionCases, prescriptionComparisons, prescriptionDeadlines, prescriptionPractice } from './prescription';
 
 /* ------------------------------------------------------------------ *
@@ -16,7 +17,7 @@ const MATERIALS: [string, string, string][] = [
 	[
 		'Tiu, <i>Criminal Procedure</i> notes (Clarence Tiu, Ateneo Law 4B, Batch 2017; 255 pages)',
 		badge('Provided — primary source', 'green'),
-		'Read in full for Rules 110–120. The notes are an outline that follows Dean Riano\'s book, with codal text, issuances and case digests. "Tiu, p. N" in this reviewer is the page of the PDF you uploaded.'
+		'Read in full for Rules 110–127 (Tiu\'s Rule 127 chapter reproduces only Secs. 1–2; its remaining pages are the Sandiganbayan rules and the 2017 Continuous Trial Guidelines). The notes are an outline that follows Dean Riano\'s book, with codal text, issuances and case digests. "Tiu, p. N" in this reviewer is the page of the PDF you uploaded.'
 	],
 	[
 		'Riano, <i>Criminal Procedure</i> (any edition)',
@@ -41,7 +42,7 @@ const MATERIALS: [string, string, string][] = [
 	]
 ];
 
-/** The ten steps from the brief (Part IV.A), with the trap each step most often catches in Rules 110–120. */
+/** The ten steps from the brief (Part IV.A), with the trap each step most often catches in Rules 110–127. */
 const METHOD: [string, string, string][] = [
 	['1 · Identify the offense', 'What crime, and what law defines and penalizes it? The penalty drives jurisdiction, the need for preliminary investigation, bail and the prescriptive period.', 'Using the penalty actually imposed instead of the penalty prescribed by law.'],
 	['2 · Identify the procedural stage', 'Complaint, preliminary investigation or inquest, arrest, bail, arraignment, motion to quash, pre-trial, trial or judgment?', 'Answering with a remedy that belongs to another stage (e.g., a motion to quash after plea on a waivable ground).'],
@@ -66,18 +67,25 @@ const STAGES: [string, string][] = [
 	['r117', 'Motion to quash before plea; double jeopardy; provisional dismissal'],
 	['r118', 'Pre-trial'],
 	['r119', 'Trial; discharge of a state witness; demurrer to evidence'],
-	['r120', 'Judgment and promulgation']
+	['r120', 'Judgment and promulgation'],
+	['r121', 'Motion for new trial or reconsideration, before the conviction becomes final'],
+	['r122', 'Appeal — who, where, how and when'],
+	['r123', 'The same procedure in the first-level courts, with their exceptions'],
+	['r124', 'The appeal in the Court of Appeals: briefs, dismissal, judgment, certification'],
+	['r125', 'Final review in the Supreme Court'],
+	['r126', 'Search and seizure — usually before the case, sometimes during it'],
+	['r127', 'Provisional remedies securing the civil liability while the case is pending']
 ];
 
 const STATUTES: [string, string, string][] = [
-	['1987 Constitution', 'Art. III, Secs. 2 (warrants; personal determination by the judge), 3(2) (exclusionary rule), 12 (custodial rights), 13 (bail), 14 (rights of the accused; trial in absentia), 16 (speedy disposition), 17 (self-incrimination), 21 (double jeopardy); Art. VIII (rule-making; review of Ombudsman findings)', 'All Rules'],
+	['1987 Constitution', 'Art. III, Secs. 2 (warrants; personal determination by the judge), 3(2) (exclusionary rule), 12 (custodial rights), 13 (bail), 14 (rights of the accused; trial in absentia), 16 (speedy disposition), 17 (self-incrimination), 21 (double jeopardy); Art. VIII (rule-making; review of Ombudsman findings; Sec. 5[2][d] — SC review of cases with reclusion perpetua or higher; Sec. 14 — decisions state facts and law)', 'All Rules'],
 	['Revised Penal Code', 'Arts. 89–91 (extinction; prescription of crimes; computation and interruption), 100–113 (civil liability), 125 (delay in delivery of detained persons), 266 (rape), 309–310 (penalties for theft, used by PD 705), 344 (private crimes), 360 (venue in libel, as amended by RA 4363), 365 (quasi-offenses)', '110, 111, 112, 113, 117, 120'],
 	['Act No. 3326, as amended', 'Prescription of offenses under special laws and ordinances; interruption by proceedings against the offender', '110 · prescription module'],
 	['Civil Code', 'Art. 13 (computation of periods); Arts. 29–35 (civil action despite acquittal; independent civil actions); Art. 2034 (compromise does not extinguish the public action); Arts. 2176–2177 (quasi-delict; no double recovery)', '111 · prescription module'],
 	['Administrative Code of 1987', 'Book I, Sec. 31 (year = twelve calendar months; month = thirty days)', 'Prescription module · deadlines'],
 	['Special penal laws', 'BP 22; RA 9165, Sec. 23 (struck down in Estipona); RA 10175 (cybercrime); PD 705, Secs. 77 and 80 (renumbered by RA 7161); RA 3019, Sec. 11 as amended by RA 10910; RA 7877; RA 8042; RA 8353; RA 10591; RA 9372 and RA 11479; RA 9369 (election offenses)', '110, 111, 116 · prescription module'],
-	['Procedure-related statutes', 'RA 7438 (rights during custodial investigation); RA 6036 and RA 10389 (recognizance); RA 8493 (Speedy Trial Act); RA 6981 (witness protection); PD 749 (immunity in bribery cases); RA 6770 (Ombudsman Act); RA 8249 (Sandiganbayan); RA 7160, Secs. 408–410 (barangay conciliation); RA 9346 (no death penalty); PD 968 as amended by RA 10707 (probation); RA 10951 (amounts and fines)', '112–120'],
-	['Supreme Court issuances', 'A.M. No. 05-8-26-SC (2005; judges no longer conduct preliminary investigation); A.M. No. 12-11-2-SC (2014; decongesting holding jails); A.M. No. 15-06-10-SC (2017 Revised Guidelines for Continuous Trial); A.M. No. 03-1-09-SC (pre-trial guidelines); A.M. No. 02-2-07-SC (2002; amended Rule 110, Sec. 5 on private prosecutors); A.M. No. 04-1-12-SC (enhanced pre-trial through conciliation and neutral evaluation); A.M. No. 18-03-16-SC and A.M. No. 21-07-16-SC (drug plea bargaining); A.M. No. 08-8-7-SC (2022 Rules on Expedited Procedures); A.M. No. 21-06-08-SC (body-worn cameras); A.M. No. 19-08-15-SC (2019 Rules of Evidence); A.M. No. 19-10-20-SC (2019 civil procedure amendments); OCA Circulars No. 39-2002 (who prosecutes in first-level courts when no prosecutor is available) and No. 265-2023 (warrant reporting)', '110–120'],
+	['Procedure-related statutes', 'RA 7438 (rights during custodial investigation); RA 6036 and RA 10389 (recognizance); RA 8493 (Speedy Trial Act); RA 6981 (witness protection); PD 749 (immunity in bribery cases); RA 6770 (Ombudsman Act); RA 8249 (Sandiganbayan); RA 7160, Secs. 408–410 (barangay conciliation); RA 9346 (no death penalty); PD 968 as amended by RA 10707 (probation); RA 10951 (amounts and fines); PD 1606 as amended by RA 7975, 8249 and 10660 (Sandiganbayan appeals; civil action always joined); RA 10863 (customs searches, formerly the Tariff and Customs Code)', '112–127'],
+	['Supreme Court issuances', 'A.M. No. 05-8-26-SC (2005; judges no longer conduct preliminary investigation); A.M. No. 12-11-2-SC (2014; decongesting holding jails); A.M. No. 15-06-10-SC (2017 Revised Guidelines for Continuous Trial); A.M. No. 03-1-09-SC (pre-trial guidelines); A.M. No. 02-2-07-SC (2002; amended Rule 110, Sec. 5 on private prosecutors); A.M. No. 04-1-12-SC (enhanced pre-trial through conciliation and neutral evaluation); A.M. No. 18-03-16-SC and A.M. No. 21-07-16-SC (drug plea bargaining); A.M. No. 08-8-7-SC (2022 Rules on Expedited Procedures); A.M. No. 21-06-08-SC (body-worn cameras); A.M. No. 19-08-15-SC (2019 Rules of Evidence); A.M. No. 19-10-20-SC (2019 civil procedure amendments); A.M. No. 00-5-03-SC (2004; intermediate CA review after People v. Mateo); A.M. No. 99-10-09-SC and A.M. No. 03-8-02-SC, Sec. 12 (search warrants in special criminal cases by the Manila and Quezon City executive judges); A.M. No. 10-3-10-SC (2011 IP rules — writs of search and seizure); A.M. No. 03-03-03-SC (cybercrime courts) and A.M. No. 17-11-03-SC (2018 Rule on Cybercrime Warrants); A.M. No. 18-07-05-SC (2018 precautionary hold departure orders); OCA Circulars No. 39-2002 (who prosecutes in first-level courts when no prosecutor is available) and No. 265-2023 (warrant reporting)', '110–127'],
 	['DOJ issuances', 'Department Order No. 153 (1996 Manual for Prosecutors); Department Circular No. 70 (2000 NPS Rule on Appeal); Circular No. 61 (1993 inquest rules); Department Circulars No. 015 and No. 028 (2024)', '110, 112']
 ];
 
@@ -137,6 +145,7 @@ export function stats(rules: RuleChapter[]) {
 		deadlines: rules.reduce((n, r) => n + r.deadlines.length, 0) + prescriptionDeadlines.length,
 		practice: practice.length,
 		mock: mockItems.length,
+		quiz: quizzes.reduce((n, z) => n + z.items.length, 0),
 		mcqs: tf(practice) + tf(mockItems),
 		essays: essays(practice) + essays(mockItems),
 		sectionsWithExceptions: rules.reduce((n, r) => n + r.sections.filter((x) => x.exceptions).length, 0),
@@ -154,7 +163,7 @@ export function renderStart(rules: RuleChapter[]) {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="start-here">Start Here — How to Use This Reviewer</h2>`);
 	out.push(
-		`<p class="sg-intro">A situational-exam reviewer for Rules 110–120, built Rule by Rule from Tiu's notes and checked against later rulings and issuances. It has ${s.sections} section discussions, ${s.enums} enumerations, ${s.comparisons} comparison tables, ${s.cases} case digests, ${s.deadlines} deadlines, ${s.practice} practice problems with answer keys and a ${s.mock}-item integrated mock exam.</p>`
+		`<p class="sg-intro">A situational-exam reviewer for Rules ${rules[0].n}–${rules[rules.length - 1].n}, built Rule by Rule from Tiu's notes and checked against later rulings and issuances. It has ${s.sections} section discussions, ${s.enums} enumerations, ${s.comparisons} comparison tables, ${s.cases} case digests, ${s.deadlines} deadlines, ${s.practice} practice problems with answer keys, a ${s.mock}-item integrated mock exam, and ${quizzes.length} practice quizzes with ${s.quiz} multiple-choice questions.</p>`
 	);
 
 	out.push(h3('start-plan', 'How to study with it'));
@@ -164,14 +173,15 @@ export function renderStart(rules: RuleChapter[]) {
 			'Take one Rule at a time. Read parts 1–8, then answer the problem bank (part 9) on paper <i>before</i> opening the answer key (part 10).',
 			'Log every miss in the error log (part 11). Do the flashcards and the oral drill aloud. Tick the mastery checklist (part 12) before moving to the next Rule.',
 			'After Rule 110, do the <a href="#prescription">prescription module</a> — it is the topic most likely to be tested with a twist.',
-			'When all eleven Rules are done, work through the <a href="#deadlines">deadlines matrix</a>, the <a href="#case-review">case review</a> and the <a href="#comparisons">consolidated comparisons</a>.',
+			'When all the Rules are done, work through the <a href="#deadlines">deadlines matrix</a>, the <a href="#case-review">case review</a> and the <a href="#comparisons">consolidated comparisons</a>.',
 			'Take the <a href="#mock-exam">mock exam</a> under time (3 hours), then grade it with the <a href="#mock-answers">separate answer key</a>.',
+			'Take the four <a href="#quizzes">practice quizzes</a> — Rules 110–114, 115–119, 120–124 and 125–127 — after finishing each range, or all four as a final check.',
 			'The night before: the <a href="#last-minute">last-minute sheet</a>.'
 		])
 	);
 	out.push(
 		p(
-			'True-or-false items also appear in the <b>MCQ Practice Engine</b> (by Rule, or "Integrated mock exam"), and situational problems in <b>ALAC Essay Exercises</b>. Your progress there is saved in this browser.'
+			'True-or-false items also appear in the <b>MCQ Practice Engine</b> (by Rule, or "Integrated mock exam"), along with the four practice quizzes ("Quiz 1" to "Quiz 4"); situational problems are in <b>ALAC Essay Exercises</b>. Your progress there is saved in this browser.'
 		)
 	);
 
@@ -192,7 +202,7 @@ export function renderStart(rules: RuleChapter[]) {
 
 	out.push(h3('start-method', 'The ten-step method for situational problems'));
 	out.push(
-		`<p class="sg-intro">From your brief (Part IV.A). Not every question needs all ten steps — use the ones the issue calls for. The right-hand column is the trap each step most often catches in Rules 110–120.</p>`
+		`<p class="sg-intro">From your brief (Part IV.A). Not every question needs all ten steps — use the ones the issue calls for. The right-hand column is the trap each step most often catches in Rules 110–127.</p>`
 	);
 	out.push(table(['Step', 'Ask', 'Trap it catches'], METHOD.map(([a, b, c]) => [`<b>${a}</b>`, b, c])));
 	out.push(
@@ -408,7 +418,7 @@ export function renderLastMinute(rules: RuleChapter[]) {
 		table(
 			['Check', 'Status', 'How'],
 			[
-				['Rules 110–120 are all covered.', ok, `Eleven separate chapters: ${rules.map((r) => `<a href="#${r.id}">${r.n}</a>`).join(', ')}.`],
+				[`Rules ${rules[0].n}–${rules[rules.length - 1].n} are all covered.`, ok, `${rules.length} separate chapters: ${rules.map((r) => `<a href="#${r.id}">${r.n}</a>`).join(', ')}. Rules 123, 125 and 127 are short in the Rules themselves, and their chapters are short too.`],
 				['Each Rule has its own complete study guide and practice set.', ok, `Every chapter has the same twelve parts (overview through mastery checklist). Problems per Rule — ${perRule}.`],
 				["Every chapter's answer key corresponds to its questions.", ok, 'Questions and answers are generated from the same list and numbered identically; each question links to its answer and back.'],
 				['Important enumerations are complete and briefly discussed.', ok, `${s.enums} enumerations, each with the complete list, a sentence or more per item, its source, and whether it is an express list or a teaching list.`],
@@ -420,7 +430,7 @@ export function renderLastMinute(rules: RuleChapter[]) {
 				['The current law is distinguished from outdated textbook explanations.', ok, `${s.corrections} corrections in "What changed after Tiu's notes" boxes, collected <a href="#start-updates">here</a>; answer keys separate the textbook rule from later changes.`],
 				['Hypothetical answers apply the rule to the facts and reach a direct conclusion.', ok, 'Every situational answer has an Application row and a Conclusion row.'],
 				['No unsupported case citations, facts or doctrines have been invented.', limited, 'Citations come from Tiu or from the decision or summary checked. Where Tiu gives only a partial citation (e.g., a year), it is left partial rather than completed by guesswork. Hypotheticals are labeled as such.'],
-				['Integrated questions are kept separate from Rule-specific exercises.', ok, `The <a href="#mock-exam">mock exam</a> (${s.mock} items, numbered M.1–M.${s.mock}) has its own section and answer key; the Rules involved are shown only in the key.`]
+				['Integrated questions are kept separate from Rule-specific exercises.', ok, `The <a href="#mock-exam">mock exam</a> (${s.mock} items, numbered M.1–M.${s.mock}) has its own section and answer key; the Rules involved are shown only in the key. The <a href="#quizzes">practice quizzes</a> (${s.quiz} items) mix Rules within each range and have their own key.`]
 			]
 		)
 	);

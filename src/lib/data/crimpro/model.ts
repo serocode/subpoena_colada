@@ -1,5 +1,5 @@
 /*
- * Content model + HTML renderers for the Criminal Procedure reviewer (Rules 110–120). Each Rule file holds
+ * Content model + HTML renderers for the Criminal Procedure reviewer (Rules 110–127). Each Rule file holds
  * its content as data; this file turns it into the study-guide HTML, the true-or-false MCQs and the
  * situational essays, so a question and its answer can never drift apart and the master matrices
  * (deadlines, cases, comparisons) are generated from the same data the Rule chapters show.
@@ -550,12 +550,16 @@ export function renderRule(r: RuleChapter) {
 	out.push(
 		`<p class="sg-intro">Holding and doctrine are kept apart from what the parties argued. Cases marked "From Tiu's notes" are digested from the notes as provided; cases marked "checked" were read against the decision or a reliable summary for this reviewer.</p>`
 	);
-	out.push(...r.cases.map(renderCase));
+	out.push(...(r.cases.length ? r.cases.map(renderCase) : [p(`No case is digested under Rule ${r.n} in Tiu's notes; the doctrines that apply are cited in the section cards and linked to their digests in other Rules.`)]));
 
 	// 7 · Deadlines
 	out.push(h3(id('deadlines'), '7 · Deadlines and periods in this Rule'));
-	out.push(`<p class="sg-intro">All of these also appear in the <a href="#deadlines">master deadlines matrix</a>.</p>`);
-	out.push(deadlineTable(r.deadlines));
+	if (r.deadlines.length) {
+		out.push(`<p class="sg-intro">All of these also appear in the <a href="#deadlines">master deadlines matrix</a>.</p>`);
+		out.push(deadlineTable(r.deadlines));
+	} else {
+		out.push(p(`Rule ${r.n} sets no periods of its own; the periods that apply come from the Rules it incorporates (see the <a href="#deadlines">master deadlines matrix</a>).`));
+	}
 
 	// 8 · Traps
 	out.push(h3(id('traps'), '8 · Exam traps and one-fact variations'));
@@ -600,7 +604,7 @@ export function renderRule(r: RuleChapter) {
 	out.push(h3(id('sheet'), '12 · Review sheet and mastery checklist'));
 	out.push(`<div class="rv-summary">${ul(r.sheet)}</div>`);
 	out.push(
-		h4(`Ready for ${r.n < 120 ? `Rule ${r.n + 1}` : 'the integrated exam'}? Tick each one you can do without notes`),
+		h4(`Ready for ${r.n < 127 ? `Rule ${r.n + 1}` : 'the practice quizzes'}? Tick each one you can do without notes`),
 		ul(
 			[
 				`State the governing rules of Rule ${r.n} accurately (parts 1–2).`,

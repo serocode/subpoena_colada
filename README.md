@@ -61,7 +61,7 @@ SvelteKit 3 (Svelte 5 runes) · Tailwind v4 · shadcn-svelte.
 | PFR Case Pronouncements | Civil Law (supplement) | Court pronouncements, Part One through Midterms | — | — | 105 |
 | Constitutional Law I | Political Law | 1987 Constitution Arts. I, II, IV–VIII | 40 | 31 | — |
 | Criminal Law 1 | Criminal Law | Revised Penal Code, Book One, Arts. 1–15 | 92 | 23 | — |
-| Criminal Procedure | Remedial Law | Rules 110–120, from Tiu's 2017 notes, with later rulings flagged | 138 | 101 | — |
+| Criminal Procedure | Remedial Law | Rules 110–127, from Tiu's 2017 notes, with later rulings flagged · four practice quizzes (Rules 110–114, 115–119, 120–124, 125–127) | 296 | 124 | — |
 | Statutory Construction | Legal Method | Agpalo, Chapters 1–5 | 82 | 8 | — |
 | Statutory Construction II | Legal Method | Agpalo, Chapters VI–XI, and five cases | 95 | 42 | 5 |
 
@@ -78,7 +78,7 @@ npm run build    # static SPA -> build/ (fallback: 200.html)
 
 - `src/lib/data/` — one file per subject (`pfr`, `pfr_cases`, `consti1`, `crim1`, `statcon`) plus `modules.ts`, the master index. These files are the source of truth for questions, essays and guides.
 - `src/lib/data/statcon2/` — Statutory Construction II (Agpalo Chs. VI–XI and five cases), kept as structured data instead of a hand-written HTML string: one file per chapter (`ch6`–`ch11`), `cases`, `integrated` (comprehensive exam) and `review` (front matter and master sheets), rendered by `model.ts`. True/false items and the case recall drill become MCQs and every ALAC problem becomes an essay, with IDs taken from each item's position in its bank, so add new items at the end of a bank.
-- `src/lib/data/crimpro/` — Criminal Procedure, Rules 110–120 (from Tiu's 2017 notes, with later rulings flagged), built on the `statcon2` helpers: one file per Rule (`r110`–`r120`), each rendered by `model.ts` into the same twelve parts; `prescription` (special module after Rule 110); `deadlines`, `cases` and `comparisons` (back matter that indexes the Rule files rather than repeating them); `integrated` (mock exam and its separate key); and `review` (start page, topic map and inventory, last-minute sheet and quality checklist). The same ID rule applies: append new items at the end of a bank.
+- `src/lib/data/crimpro/` — Criminal Procedure, Rules 110–127 (from Tiu's 2017 notes, with later rulings flagged), built on the `statcon2` helpers: one file per Rule (`r110`–`r127`), each rendered by `model.ts` into the same twelve parts; `prescription` (special module after Rule 110); `deadlines`, `cases` and `comparisons` (back matter that indexes the Rule files rather than repeating them); `integrated` (mock exam and its separate key); `quizzes` (four practice quizzes of four-option MCQs by Rule range, shown as "Quiz 1"–"Quiz 4" in the MCQ topic filter and printed in the guide with their own key); and `review` (start page, topic map and inventory, last-minute sheet and quality checklist). The same ID rule applies: append new items at the end of a bank.
 - `src/lib/stores/storage.svelte.ts` — reactive `localStorage` store (debounced writes, cross-tab sync, export/import).
 - `src/lib/highlights.svelte.ts` — anchors reader highlights to quoted text and paints them with the CSS Custom Highlight API, without touching the guide's DOM.
 - `src/lib/components/` — `McqQuizEngine`, `AlacEssayEditor`, `StudyGuideViewer`, `HighlightMenu` (the menu over selected or highlighted text), `HighlightsPanel`, `HighlightEditor`, `AlacBanner`, `HeaderNav`.

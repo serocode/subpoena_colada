@@ -659,7 +659,7 @@ export const r110: RuleChapter = {
 			rule: 'Rule 110, Secs. 2 and 5; Rule 122.',
 			hypo: 'After an acquittal, the private complainant files a Rule 45 petition asking the SC to convict. It must be dismissed as to the criminal aspect; he may question only the civil aspect.',
 			examQ: 'May a private complainant appeal an acquittal? What may he do instead?',
-			also: ['r120'],
+			also: ['r120', 'r122'],
 			verify: 'Facts not given in Tiu; read the decision before citing them.'
 		},
 		{
