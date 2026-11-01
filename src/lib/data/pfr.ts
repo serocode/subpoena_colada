@@ -1,4 +1,5 @@
 import type { LawModule } from '$lib/types';
+import { familyFiliationHtml, familyFiliationReview } from './pfr_ext';
 
 /* Generated from the original static study guide. Edit freely — this file is the source of truth. */
 export const pfr: LawModule = {
@@ -6,16 +7,16 @@ export const pfr: LawModule = {
 	title: "Persons & Family Relations",
 	subjectCategory: "Civil Law",
 	eyebrow: "Civil Code · Family Code",
-	description: "Effectivity and application of laws, civil personality, marriage, void and voidable unions, termination, and property relations between spouses — with a color-coded codal guide.",
-	legalScope: "Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–162",
+	description: "Effectivity and application of laws, civil personality, marriage, void and voidable unions, termination, property relations between spouses, the family and the family home, and paternity and filiation — with a color-coded codal guide.",
+	legalScope: "Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–182",
 	topics: [
 		{"id":"prelim","name":"Preliminary Title","eyebrow":"CIVIL CODE · ARTS. 1–18","desc":"Effectivity & publication, ignorance of law, retroactivity, repeal & waiver, stare decisis, conflict of laws, human relations."},
 		{"id":"persons","name":"Persons & Personality","eyebrow":"CIVIL CODE · ARTS. 37–51","desc":"Juridical capacity vs. capacity to act, restrictions, natural persons, juridical persons."},
 		{"id":"marriage","name":"Marriage","eyebrow":"FAMILY CODE · ARTS. 1–54, 147–162","desc":"Requisites, license & exemptions, void/voidable grounds, Art. 36 doctrine, termination, unions without marriage (Arts. 147–148) & family home."},
 		{"id":"proprel","name":"Property Relations Between Husband & Wife","eyebrow":"FAMILY CODE · ARTS. 74–104","desc":"Marriage settlements, donations propter nuptias, and the absolute community of property — from general provisions through liquidation."},
 	],
-	studyGuideIntro: "Preliminary Title (Civil Code, Arts. 1–18) · Persons & Personality (Civil Code, Arts. 37–51) · Marriage, including Unions Without Marriage & Family Home (Family Code, Arts. 1–54, 147–162) · Property Relations Between Husband & Wife (Family Code, Arts. 74–104). Not a substitute for the full text — use it to review before recitation.",
-	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exemption / exception"},{"color":"orange","label":"Exemption of the exemption"},{"color":"red","label":"Jurisprudence / doctrine"}],
+	studyGuideIntro: "Preliminary Title (Civil Code, Arts. 1–18) · Persons & Personality (Civil Code, Arts. 37–51) · Marriage, including Unions Without Marriage & Family Home (Family Code, Arts. 1–54, 147–162) · Property Relations Between Husband & Wife (Family Code, Arts. 74–104) · The Family, the Family Home, and Paternity & Filiation (Family Code, Arts. 149–182). Not a substitute for the full text — use it to review before recitation.",
+	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exemption / exception"},{"color":"orange","label":"Exemption of the exemption / trap"},{"color":"purple","label":"Effect / reason"},{"color":"red","label":"Jurisprudence / doctrine"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="cross-cutting-doctrines">Cross-Cutting Doctrines</h2>
 <p class="sg-intro" style="margin-top:-6px;">These equity and constitutional-law doctrines aren't tied to a single article, but recur across topics and are easy to mix up under exam pressure.</p>
 <div class="case-card"><div class="cname">Doctrine of Unclean Hands</div><div class="cdoc">A general equity maxim: a party who comes to court for relief must do so without having engaged in the wrongdoing at the heart of his own claim — "he who seeks equity must do equity." It does <strong>not</strong>, however, bar a psychologically incapacitated spouse from filing his or her own Article 36 petition, since what is being alleged is an incapacity, not a deliberate wrong, and the ground exists to protect the institution of marriage regardless of who brings the action.</div></div>
@@ -472,6 +473,8 @@ export const pfr: LawModule = {
 <div class="case-card"><div class="cname">Family-member exemption from theft/swindling/malicious mischief (Art. 332, RPC)</div><div class="cdoc">Spouses, ascendants, descendants, and relatives by affinity in the same line are exempt outright; siblings and siblings-in-law are exempt only if actually living together.</div></div>
 <div class="case-card"><div class="cname">Hierarchy of filiation evidence (Art. 172)</div><div class="cdoc">The record of birth, a final judgment, or an admission of filiation in a public document or signed private handwritten instrument are primary evidence; open and continuous possession of status, and other Rules of Court/special-law evidence, are only secondary, used absent the primary evidence.</div></div>
 
+${familyFiliationHtml}
+
 <h2 class="sg-h2" id="property-relations-review-tools-arts-74-104">Review Tools — Property Relations (Arts. 74–104)</h2>
 <div class="exoex-box">
   <span class="exoex-label">Exemption of the exemption — Property Relations (Arts. 74–104)</span>
@@ -529,7 +532,8 @@ export const pfr: LawModule = {
     <li><strong>Separation in fact.</strong> Does not dissolve the ACP (Arts. 99, 100).</li>
     <li><strong>Widow(er) remarrying without liquidation.</strong> Valid marriage under mandatory complete separation (Art. 103) — not a void marriage (contrast Arts. 52–53).</li>
   </ol>
-</div>`,
+</div>
+${familyFiliationReview}`,
 	watchFor: {
 		"proprel": `<strong>Watch for: the exemption OF the exemption.</strong>
     <ul>

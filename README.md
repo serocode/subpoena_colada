@@ -72,7 +72,7 @@ SvelteKit 3 (Svelte 5 runes) · Tailwind v4 · shadcn-svelte.
 
 | Subject | Category | Coverage | MCQs | Essays | Case digests |
 | --- | --- | --- | ---: | ---: | ---: |
-| Persons & Family Relations | Civil Law | Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–162 · court pronouncements, Part One through Midterms | 134 | 52 | 105 |
+| Persons & Family Relations | Civil Law | Civil Code Arts. 1–18, 37–51 · Family Code Arts. 1–182 (through the family home, and paternity and filiation) · court pronouncements, Part One through Midterms | 134 | 52 | 105 |
 | Constitutional Law I | Political Law | 1987 Constitution Arts. I, II, IV–X | 40 | 54 | — |
 | Criminal Law 1 | Criminal Law | Revised Penal Code, Book One, Arts. 1–15 | 92 | 23 | — |
 | Criminal Procedure | Remedial Law | Rules 110–127, from Tiu's 2017 notes, with later rulings flagged · four practice quizzes (Rules 110–114, 115–119, 120–124, 125–127) | 296 | 124 | — |
@@ -92,6 +92,7 @@ npm run build    # static SPA -> build/ (fallback: 200.html)
 ## Layout
 
 - `src/lib/data/` — one file per data module (`pfr`, `pfr_cases`, `consti1`, `crim1`, `statcon`) plus `modules.ts`, the master index, which combines modules into the subjects the app shows (`pfr` + `pfr_cases`, `statcon` + `statcon2`). `aliases.ts` maps the old ids to the merged ones. These files are the source of truth for questions, essays and guides.
+- `src/lib/data/pfr_ext.ts` — Persons & Family Relations, Family Code Arts. 149–182 (the family, the family home, paternity and filiation, legitimation): article-by-article codal text with color-tagged notes, inserted after Part VII, and its quick-recall review tools at the end of the guide.
 - `src/lib/data/consti1_ext.ts` — Constitutional Law I, Arts. VIII (addendum), IX and X: the guide sections, topics, *Watch for* notes and bar-style ALAC problems, appended to `consti1`.
 - `src/lib/data/statcon2/` — Statutory Construction II (Agpalo Chs. VI–XI and five cases), kept as structured data instead of a hand-written HTML string: one file per chapter (`ch6`–`ch11`), `cases`, `integrated` (comprehensive exam) and `review` (front matter and master sheets), rendered by `model.ts`. True/false items and the case recall drill become MCQs and every ALAC problem becomes an essay, with IDs taken from each item's position in its bank, so add new items at the end of a bank.
 - `src/lib/data/crimpro/` — Criminal Procedure, Rules 110–127 (from Tiu's 2017 notes, with later rulings flagged), built on the `statcon2` helpers: one file per Rule (`r110`–`r127`), each rendered by `model.ts` into the same twelve parts; `prescription` (special module after Rule 110); `deadlines`, `cases` and `comparisons` (back matter that indexes the Rule files rather than repeating them); `integrated` (mock exam and its separate key); `quizzes` (four practice quizzes of four-option MCQs by Rule range, shown as "Quiz 1"–"Quiz 4" in the MCQ topic filter and printed in the guide with their own key); and `review` (start page, topic map and inventory, last-minute sheet and quality checklist). The same ID rule applies: append new items at the end of a bank.
