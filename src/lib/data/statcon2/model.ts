@@ -5,7 +5,7 @@
  * drift apart and the master review lists are generated rather than copied.
  *
  * All strings are trusted, first-party HTML (inline <b>, <i>, <em> are fine). Never put "<h2" inside
- * content: the StudyGuideViewer splits the guide into sections on that tag.
+ * content: the reader (src/lib/content.ts) splits the guide into parts on that tag.
  */
 import type { AlacEssay, McqQuestion, McqTag } from '$lib/types';
 

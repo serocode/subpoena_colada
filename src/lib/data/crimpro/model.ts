@@ -5,7 +5,7 @@
  * (deadlines, cases, comparisons) are generated from the same data the Rule chapters show.
  *
  * All strings are trusted, first-party HTML (inline <b>, <i>, <em> are fine). Never put "<h2" inside
- * content: the StudyGuideViewer splits the guide into sections on that tag.
+ * content: the reader (src/lib/content.ts) splits the guide into parts on that tag.
  */
 import type { AlacEssay, McqQuestion, McqTag } from '$lib/types';
 import { badge, box, dl, flashcards, h3, h4, ol, p, plain, table, ul, type Alac, type Color, type Level } from '$lib/data/statcon2/model';
