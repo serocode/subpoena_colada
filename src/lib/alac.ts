@@ -69,3 +69,19 @@ export function draftWordCount(d: UserEssayDraft | undefined) {
 export function draftHasContent(d: UserEssayDraft | undefined) {
 	return draftWordCount(d) > 0;
 }
+
+export type EssayStatus = 'mastered' | 'review' | 'drafted' | 'new';
+
+export function essayStatus(d: UserEssayDraft | undefined): EssayStatus {
+	if (d?.isMastered) return 'mastered';
+	if (d?.needsReview) return 'review';
+	if (draftHasContent(d)) return 'drafted';
+	return 'new';
+}
+
+export const ESSAY_STATUS: Record<EssayStatus, { label: string; dot: string }> = {
+	mastered: { label: 'Mastered', dot: 'bg-green' },
+	review: { label: 'Needs review', dot: 'bg-orange' },
+	drafted: { label: 'In progress', dot: 'bg-blue' },
+	new: { label: 'Not started', dot: 'border border-input bg-transparent' }
+};

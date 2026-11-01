@@ -14,8 +14,15 @@
 		TriangleAlert,
 		Trophy,
 		Eye,
-		Inbox
+		Inbox,
+		Flag,
+		BookOpen
 	} from '@lucide/svelte';
+	import { onDestroy, untrack } from 'svelte';
+	import EmptyState from '$lib/components/common/EmptyState.svelte';
+	import Segmented from '$lib/components/common/Segmented.svelte';
+	import { getPart, readHref } from '$lib/content';
+	import { ui } from '$lib/stores/ui.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Progress } from '$lib/components/ui/progress';
@@ -25,16 +32,34 @@
 	import { Input } from '$lib/components/ui/input';
 	import { userStorage } from '$lib/stores/storage.svelte';
 	import { cn, formatClock, pct, seededOrder } from '$lib/utils';
-	import type { LawModule, McqQuestion, McqTag } from '$lib/types';
-
-	let { lawModule }: { lawModule: LawModule } = $props();
+	import type { McqQuestion, McqTag, Subject } from '$lib/types';
 
 	type Mode = 'practice' | 'exam';
 	type Filter = 'all' | 'unanswered' | 'incorrect' | 'bookmarked';
+
+	let {
+		lawModule,
+		topicId = 'all',
+		initialMode = 'practice',
+		initialFilter = 'all',
+		initialQuestion = '',
+		onchange
+	}: {
+		lawModule: Subject;
+		/** Set by the navigator (?topic=); the page re-mounts the engine when it changes. */
+		topicId?: string;
+		initialMode?: Mode;
+		initialFilter?: Filter;
+		/** Open at this question (?question=), e.g. from search. */
+		initialQuestion?: string;
+		/** Mode and filter go back into the URL, so a refresh or a shared link keeps them. */
+		onchange?: (s: { mode: Mode; filter: Filter; question?: string }) => void;
+	} = $props();
+
 	type Phase = 'setup' | 'running' | 'submitted';
 
 	const FILTERS: { id: Filter; label: string }[] = [
-		{ id: 'all', label: 'View all' },
+		{ id: 'all', label: 'All' },
 		{ id: 'unanswered', label: 'Unanswered' },
 		{ id: 'incorrect', label: 'Incorrect' },
 		{ id: 'bookmarked', label: 'Bookmarked' }
@@ -51,9 +76,10 @@
 	const byId = $derived(new Map(lawModule.mcqs.map((q) => [q.id, q])));
 	const topics = $derived(lawModule.topics ?? []);
 
-	let mode = $state<Mode>('practice');
-	let filter = $state<Filter>('all');
-	let topicId = $state('all');
+	// svelte-ignore state_referenced_locally — the page re-mounts the engine per topic
+	let mode = $state<Mode>(initialMode);
+	// svelte-ignore state_referenced_locally
+	let filter = $state<Filter>(initialFilter);
 	let phase = $state<Phase>('setup');
 	/** Frozen list of question ids for this session, so answering never reshuffles the list under you. */
 	let sessionIds = $state<string[]>([]);
@@ -68,6 +94,8 @@
 	let secondsLeft = $state(0);
 	let secondsUsed = $state(0);
 	let confirmSubmit = $state(false);
+	/** Exam: questions marked to come back to. */
+	let flagged = $state<Record<string, boolean>>({});
 
 	let cardEl: HTMLElement | undefined = $state();
 	let rootEl: HTMLElement | undefined = $state();
@@ -100,6 +128,10 @@
 	});
 
 	const watchFor = $derived(lawModule.watchFor?.[topicId === 'all' ? 'all' : topicId]);
+	/** The guide part a question's topic matches (Criminal Procedure: Rule 110 questions → Rule 110). */
+	const guidePart = $derived(current?.topicId ? getPart(lawModule, current.topicId) : undefined);
+	const unansweredNumbers = $derived(sessionIds.map((id, i) => (examAnswers[id] === undefined ? i + 1 : 0)).filter(Boolean));
+	const flaggedCount = $derived(sessionIds.filter((id) => flagged[id]).length);
 
 	const result = $derived.by(() => {
 		if (phase !== 'submitted') return null;
@@ -137,27 +169,44 @@
 		index = 0;
 		hintOpen = false;
 		examAnswers = {};
+		flagged = {};
 		phase = 'setup';
 		examMinutes = Math.max(1, sessionIds.length);
 		confirmSubmit = false;
 	}
-	rebuild();
+	// One-time setup: the parent remounts the engine (it is keyed) when the topic or target question changes.
+	untrack(() => {
+		rebuild();
+		// Arriving at a specific question: show it, even if the filter would have hidden it.
+		if (initialQuestion && byId.has(initialQuestion)) {
+			if (!sessionIds.includes(initialQuestion)) {
+				filter = 'all';
+				rebuild();
+			}
+			index = Math.max(0, sessionIds.indexOf(initialQuestion));
+		}
+	});
 
+	function report() {
+		onchange?.({ mode, filter });
+	}
 	function setMode(m: Mode) {
 		if (m === mode || examRunning) return;
 		mode = m;
 		rebuild();
+		report();
 	}
 	function setFilter(f: Filter) {
 		if (examRunning) return;
 		filter = f;
 		rebuild();
+		report();
 	}
-	function setTopic(id: string) {
-		if (examRunning) return;
-		topicId = id;
-		rebuild();
-	}
+
+	$effect(() => {
+		ui.focusMode = mode === 'exam' && phase === 'running';
+	});
+	onDestroy(() => (ui.focusMode = false));
 
 	// ---- navigation ----
 	function go(i: number) {
@@ -260,95 +309,44 @@
 
 <svelte:window onkeydown={onKey} onbeforeunload={onBeforeUnload} />
 
-<div bind:this={rootEl} class="space-y-4">
+<div bind:this={rootEl} class="flex flex-col gap-5">
 	<!-- Controls -->
-	<div class="space-y-3 rounded-xl border bg-card p-3 sm:p-4">
-		<div class="flex flex-wrap items-center gap-x-4 gap-y-3">
-			<div role="group" aria-label="Quiz mode" class="inline-flex rounded-lg border bg-muted p-0.5">
-				{#each [{ id: 'practice', label: 'Practice', sub: 'instant feedback' }, { id: 'exam', label: 'Exam', sub: 'timed' }] as m (m.id)}
+	{#if !examRunning}
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<Segmented
+				label="Mode"
+				value={mode}
+				onchange={(m: Mode) => setMode(m)}
+				options={[
+					{ value: 'practice', label: 'Practice' },
+					{ value: 'exam', label: 'Timed exam' }
+				]}
+			/>
+			<div role="group" aria-label="Show questions" class="flex flex-wrap gap-1.5">
+				{#each FILTERS as f (f.id)}
 					<button
 						type="button"
-						aria-pressed={mode === m.id}
-						disabled={examRunning && mode !== m.id}
-						onclick={() => setMode(m.id as Mode)}
-						class={cn(
-							'rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
-							mode === m.id ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
-						)}
-					>
-						{m.label}
-						<span class="hidden text-xs font-normal text-muted-foreground sm:inline">· {m.sub}</span>
-					</button>
-				{/each}
-			</div>
-
-			<div role="group" aria-label="Filter questions" class="flex flex-wrap gap-1.5">
-				{#each FILTERS as f (f.id)}
-					<Button
-						variant={filter === f.id ? 'default' : 'outline'}
-						size="sm"
 						aria-pressed={filter === f.id}
-						disabled={examRunning}
 						onclick={() => setFilter(f.id)}
+						class={cn('inline-flex h-8 items-center gap-1.5 rounded-md border px-3 text-[0.8125rem] font-medium transition-colors', filter === f.id ? 'border-primary bg-primary text-primary-foreground' : 'border-input bg-popover hover:bg-muted')}
 					>
-						{f.label}
-						<span class="tabular-nums opacity-70">{filterCounts[f.id]}</span>
-					</Button>
+						{f.label} <span class="tabular-nums opacity-70">{filterCounts[f.id]}</span>
+					</button>
 				{/each}
 			</div>
 		</div>
-
-		{#if topics.length > 1}
-			<div role="group" aria-label="Filter by topic" class="-mx-3 flex gap-1.5 overflow-x-auto border-t px-3 pt-3 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0 [&>button]:shrink-0">
-				<button
-					type="button"
-					aria-pressed={topicId === 'all'}
-					disabled={examRunning}
-					onclick={() => setTopic('all')}
-					class={cn(
-						'rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-50',
-						topicId === 'all' ? 'border-primary bg-primary text-primary-foreground' : 'bg-background text-muted-foreground hover:text-foreground'
-					)}
-				>
-					All topics
-				</button>
-				{#each topics as t (t.id)}
-					<button
-						type="button"
-						aria-pressed={topicId === t.id}
-						disabled={examRunning}
-						onclick={() => setTopic(t.id)}
-						title={t.desc}
-						class={cn(
-							'rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-50',
-							topicId === t.id ? 'border-primary bg-primary text-primary-foreground' : 'bg-background text-muted-foreground hover:text-foreground'
-						)}
-					>
-						{t.name}
-					</button>
-				{/each}
-			</div>
-		{/if}
-	</div>
+	{/if}
 
 	{#if total === 0}
-		<Card.Root>
-			<Card.Content class="flex flex-col items-center gap-3 py-12 text-center">
-				<Inbox class="size-8 text-muted-foreground" />
-				<p class="font-medium">
-					{#if filter === 'unanswered'}
-						You've answered everything here. Nice work.
-					{:else if filter === 'incorrect'}
-						No incorrect answers in this set — yet.
-					{:else if filter === 'bookmarked'}
-						No bookmarked questions here. Tap the bookmark icon on any question to save it.
-					{:else}
-						No questions match.
-					{/if}
-				</p>
-				<Button variant="outline" onclick={() => ((filter = 'all'), (topicId = 'all'), rebuild())}>Show all questions</Button>
-			</Card.Content>
-		</Card.Root>
+		<EmptyState
+			icon={Inbox}
+			title={filter === 'unanswered' ? "You've answered everything here." : filter === 'incorrect' ? 'No incorrect answers in this set — yet.' : filter === 'bookmarked' ? 'No bookmarked questions here.' : 'No questions match.'}
+		>
+			{#if filter === 'bookmarked'}Tap the bookmark on any question to save it here.{/if}
+			{#snippet actions()}
+				<Button variant="outline" onclick={() => setFilter('all')}>Show all questions</Button>
+			{/snippet}
+		</EmptyState>
 	{:else if mode === 'exam' && phase === 'setup'}
 		<Card.Root>
 			<Card.Header>
@@ -402,14 +400,14 @@
 		{/if}
 
 		{#if examRunning}
-			<div class="sticky top-14 z-30 flex items-center justify-between gap-3 rounded-xl border bg-card/95 px-4 py-2.5 backdrop-blur" role="status">
-				<span class={cn('inline-flex items-center gap-2 font-mono text-lg font-semibold tabular-nums', secondsLeft <= 60 && 'text-destructive')}>
-					<Clock class="size-4" />
+			<div class="sticky top-[calc(var(--header-h)+0.5rem)] z-30 flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-popover px-4 py-2.5 shadow-sm">
+				<span role="timer" aria-live="off" class={cn('inline-flex items-center gap-2 rounded-lg border border-input px-3 py-1 text-xl font-semibold tabular-nums', secondsLeft <= 60 && 'border-destructive text-destructive')}>
+					<Clock class="size-[1.1rem]" />
 					{formatClock(secondsLeft)}
 					<span class="sr-only">remaining</span>
 				</span>
-				<span class="text-sm text-muted-foreground tabular-nums">{answeredInSet}/{total} answered</span>
-				<Button size="sm" onclick={requestSubmit}><Send /> Submit</Button>
+				<span class="text-sm text-muted-foreground tabular-nums">{answeredInSet} of {total} answered{flaggedCount ? ` · ${flaggedCount} flagged` : ''}</span>
+				<Button onclick={requestSubmit}><Send /> Submit exam</Button>
 			</div>
 		{/if}
 
@@ -422,6 +420,8 @@
 			</details>
 		{/if}
 
+		<div class="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_16rem]">
+		<div class="flex min-w-0 flex-col gap-4">
 		<!-- Progress + navigation -->
 		<div class="space-y-2">
 			<div class="flex items-center justify-between gap-3 text-sm">
@@ -442,6 +442,17 @@
 									<Badge variant="outline" class={cn('h-auto', TAGS[current.tag].cls)}>{TAGS[current.tag].label}</Badge>
 								{/if}
 							</div>
+							{#if examRunning}
+								<Button
+									variant={flagged[current.id] ? 'outline' : 'ghost'}
+									size="sm"
+									class={cn('-mt-1 shrink-0', flagged[current.id] && 'border-orange/60 text-orange')}
+									aria-pressed={!!flagged[current.id]}
+									onclick={() => current && (flagged[current.id] = !flagged[current.id])}
+								>
+									<Flag /> {flagged[current.id] ? 'Flagged' : 'Flag for review'}
+								</Button>
+							{/if}
 							<Button
 								variant="ghost"
 								size="icon"
@@ -536,6 +547,11 @@
 													<p class="text-xs font-semibold tracking-wider text-muted-foreground uppercase">Explanation</p>
 													<p class="mt-0.5">{current.explanation}</p>
 												</div>
+												{#if guidePart}
+													<a href={readHref(lawModule.id, guidePart.id)} class="inline-flex items-center gap-1.5 text-sm font-medium no-underline hover:underline">
+														<BookOpen class="size-4" /> Read {guidePart.label || guidePart.title} in the guide
+													</a>
+												{/if}
 											</div>
 										</Accordion.Content>
 									</Accordion.Item>
@@ -557,8 +573,9 @@
 			{/key}
 		</div>
 
+		</div>
 		<!-- Question map -->
-		<section aria-label="Question map" class="rounded-xl border bg-card p-3 sm:p-4">
+		<section aria-label="Question map" class="rounded-xl border bg-card p-3 sm:p-4 xl:sticky xl:top-[calc(var(--header-h)+1.5rem)]">
 			<div class="mb-3 flex flex-wrap items-center justify-between gap-2">
 				<h3 class="text-sm font-semibold">Jump to question</h3>
 				<ul class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
@@ -566,28 +583,32 @@
 					<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-incorrect bg-incorrect/30"></span> Incorrect</li>
 					{#if examRunning}
 						<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-primary bg-primary/20"></span> Answered</li>
+						<li class="flex items-center gap-1"><span class="size-2.5 rounded-sm border border-dashed border-input"></span> Unanswered</li>
+						<li class="flex items-center gap-1"><span class="size-2 rounded-full bg-orange"></span> Flagged</li>
 					{/if}
 					<li class="flex items-center gap-1"><span class="size-1.5 rounded-full bg-yellow"></span> Bookmarked</li>
 				</ul>
 			</div>
-			<div class="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-1.5">
+			<div class="grid grid-cols-[repeat(auto-fill,minmax(2.5rem,1fr))] gap-1.5 xl:grid-cols-5">
 				{#each sessionIds as id, i (id)}
 					{@const st = mapState(id)}
 					<button
 						type="button"
 						onclick={() => go(i)}
-						aria-label="Question {i + 1}{st === 'correct' ? ', correct' : st === 'incorrect' ? ', incorrect' : st === 'answered' ? ', answered' : ''}{userStorage.isBookmarked(id) ? ', bookmarked' : ''}"
+						aria-label="Question {i + 1}{st === 'correct' ? ', correct' : st === 'incorrect' ? ', incorrect' : st === 'answered' ? ', answered' : examRunning ? ', unanswered' : ''}{flagged[id] ? ', flagged' : ''}{userStorage.isBookmarked(id) ? ', bookmarked' : ''}"
 						aria-current={i === index ? 'true' : undefined}
 						class={cn(
 							'relative h-9 rounded-md border text-xs font-medium tabular-nums transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
 							st === 'correct' && 'border-correct bg-correct/20 text-foreground',
-							st === 'incorrect' && 'border-incorrect bg-incorrect/20 text-foreground',
+							st === 'incorrect' && 'border-2 border-incorrect bg-incorrect/20 text-foreground',
+							st === 'none' && examRunning && 'border-dashed',
 							st === 'answered' && 'border-primary bg-primary/15',
 							i === index && 'ring-2 ring-ring ring-offset-1 ring-offset-background'
 						)}
 					>
 						{i + 1}
 						{#if userStorage.isBookmarked(id)}<span class="absolute top-0.5 right-0.5 size-1.5 rounded-full bg-yellow"></span>{/if}
+						{#if flagged[id]}<span class="absolute -top-1 -left-1 size-2.5 rounded-full border-2 border-card bg-orange" aria-hidden="true"></span>{/if}
 					</button>
 				{/each}
 			</div>
@@ -596,20 +617,22 @@
 				<kbd class="rounded border bg-muted px-1">1</kbd>–<kbd class="rounded border bg-muted px-1">4</kbd> to answer.
 			</p>
 		</section>
+		</div>
 	{/if}
 </div>
 
 <Dialog.Root bind:open={confirmSubmit}>
 	<Dialog.Content class="sm:max-w-sm">
 		<Dialog.Header>
-			<Dialog.Title>Submit with unanswered questions?</Dialog.Title>
+			<Dialog.Title>Submit with {total - answeredInSet} unanswered?</Dialog.Title>
 			<Dialog.Description>
-				{total - answeredInSet} of {total} question{total - answeredInSet === 1 ? ' is' : 's are'} still blank. Blank answers count as incorrect.
+				Question{unansweredNumbers.length === 1 ? '' : 's'} {unansweredNumbers.length > 12 ? `${unansweredNumbers.slice(0, 12).join(', ')} and ${unansweredNumbers.length - 12} more` : unansweredNumbers.join(', ')}
+				{unansweredNumbers.length === 1 ? 'has' : 'have'} no answer and will count as wrong.{flaggedCount ? ` ${flaggedCount} ${flaggedCount === 1 ? 'is' : 'are'} flagged for review.` : ''}
 			</Dialog.Description>
 		</Dialog.Header>
 		<Dialog.Footer>
 			<Button variant="outline" onclick={() => (confirmSubmit = false)}>Keep working</Button>
-			<Button onclick={submitExam}>Submit exam</Button>
+			<Button onclick={submitExam}>Submit anyway</Button>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

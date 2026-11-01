@@ -87,6 +87,13 @@
 	--correct: #2f6b4b;
 	--incorrect: #9a3e30;
 
+	/* Layout */
+	--header-h: 3.5rem;
+	--nav-w: 18rem;
+	--rail-w: 14.5rem;
+	--measure: 45rem;
+	--leading: 1.7;
+
 	/* Reader highlights: marker hues, laid over text at --hl-alpha. */
 	--hl-yellow: #f7d23e;
 	--hl-green: #7fd18b;
@@ -136,7 +143,9 @@
 @theme inline {
 	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 	--font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+	/* Cinzel is the brand face only (wordmark, a subject's title on its overview). Headings use the serif. */
 	--font-display: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
+	--font-brand: 'Cinzel', 'Source Serif 4 Variable', Georgia, serif;
 
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);
@@ -188,10 +197,10 @@
 	}
 	body {
 		@apply bg-background font-sans text-foreground antialiased;
-		background-image:
-			radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--foreground) 4%, transparent), transparent 45%),
-			radial-gradient(circle at 88% 92%, color-mix(in oklab, var(--foreground) 5%, transparent), transparent 45%);
-		background-attachment: fixed;
+	}
+	:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 2px;
 	}
 	h1,
 	h2,
@@ -211,9 +220,24 @@
 	}
 }
 
+/* Headings: the reading serif. */
 @utility font-heading {
-	font-family: var(--font-display);
+	font-family: var(--font-serif);
+	letter-spacing: 0;
+}
+/* The wordmark and a subject's title on its overview. */
+@utility font-brand {
+	font-family: var(--font-brand);
 	letter-spacing: 0.02em;
+}
+/* Small uppercase label used for eyebrows and section labels across the app. */
+@utility label-caps {
+	font-family: var(--font-sans);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
 }
 
 /* ------------------------------------------------------------------ *
@@ -227,8 +251,8 @@
 	container: study-guide / inline-size;
 	overflow-wrap: break-word;
 	font-family: var(--font-serif);
-	font-size: 1.0625rem;
-	line-height: 1.7;
+	font-size: 1.125rem;
+	line-height: var(--leading);
 	--tw-prose-body: var(--foreground);
 	--tw-prose-headings: var(--foreground);
 	--tw-prose-bold: var(--foreground);
@@ -243,21 +267,37 @@
 	--tw-prose-invert-th-borders: var(--border);
 }
 .study-guide .sg-h2 {
-	font-family: var(--font-display);
+	font-family: var(--font-serif);
 	font-weight: 600;
 	font-size: 1.5rem;
-	letter-spacing: 0.01em;
+	line-height: 1.25;
 	margin: 2.75rem 0 0.35rem;
 	padding-bottom: 0.4rem;
-	border-bottom: 2px solid var(--border);
-	scroll-margin-top: 5.5rem;
+	border-bottom: 1px solid var(--border);
+	scroll-margin-top: 7rem;
+}
+/* The reader shows the part title as the page title, so the guide's own h2 stays for anchors and print only. */
+.reader .study-guide .sg-h2:first-child {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 .study-guide .sg-h3 {
-	font-family: var(--font-sans);
-	font-weight: 650;
-	font-size: 1.05rem;
-	margin: 1.9rem 0 0.4rem;
-	scroll-margin-top: 5.5rem;
+	font-family: var(--font-serif);
+	font-weight: 600;
+	font-size: 1.375rem;
+	line-height: 1.3;
+	margin: 0 0 0.6rem;
+	scroll-margin-top: 7rem;
+}
+.study-guide [id] {
+	scroll-margin-top: 7rem;
 }
 .study-guide .sg-intro {
 	font-family: var(--font-sans);
@@ -322,11 +362,11 @@
 	background: color-mix(in oklab, var(--orange) 12%, transparent);
 }
 .study-guide .case-card {
-	border-left: 3px solid var(--red);
-	padding: 0.5rem 0.9rem;
-	margin: 0 0 0.7rem;
-	background: color-mix(in oklab, var(--red) 5%, transparent);
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	border: 1px solid color-mix(in oklab, var(--red) 28%, transparent);
+	padding: 0.7rem 1rem;
+	margin: 0 0 0.75rem;
+	background: color-mix(in oklab, var(--red) 7%, transparent);
+	border-radius: var(--radius-lg);
 }
 .study-guide .case-card .cname {
 	font-family: var(--font-sans);
@@ -340,14 +380,14 @@
 	color: var(--muted-foreground);
 }
 .study-guide .exoex-box {
-	border-left: 4px solid var(--orange);
-	background: color-mix(in oklab, var(--orange) 11%, transparent);
-	padding: 0.8rem 1rem;
+	border: 1px solid color-mix(in oklab, var(--orange) 30%, transparent);
+	background: color-mix(in oklab, var(--orange) 10%, transparent);
+	padding: 0.85rem 1.1rem;
 	margin: 0.8rem 0 1.2rem;
 	font-family: var(--font-sans);
-	font-size: 0.875rem;
+	font-size: 0.9375rem;
 	line-height: 1.6;
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	border-radius: var(--radius-lg);
 }
 .study-guide .exoex-label {
 	display: block;
@@ -359,14 +399,14 @@
 	color: var(--orange);
 }
 .study-guide .sg-example {
-	border-left: 4px solid var(--blue);
+	border: 1px solid color-mix(in oklab, var(--blue) 28%, transparent);
 	background: color-mix(in oklab, var(--blue) 8%, transparent);
-	padding: 0.8rem 1rem;
+	padding: 0.85rem 1.1rem;
 	margin: 0.8rem 0 1.2rem;
 	font-family: var(--font-sans);
-	font-size: 0.875rem;
+	font-size: 0.9375rem;
 	line-height: 1.6;
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	border-radius: var(--radius-lg);
 }
 .study-guide .sg-example .exoex-label {
 	color: var(--blue);
@@ -468,14 +508,14 @@
 	margin: 0.2rem 0 0.5rem;
 }
 .study-guide .rv-box {
-	border-left: 4px solid var(--c);
+	border: 1px solid color-mix(in oklab, var(--c) 28%, transparent);
 	background: color-mix(in oklab, var(--c) 9%, transparent);
-	padding: 0.65rem 0.95rem;
+	padding: 0.8rem 1.05rem;
 	margin: 0.7rem 0 0.9rem;
-	border-radius: 0 var(--radius-md) var(--radius-md) 0;
-	font-family: var(--font-sans);
-	font-size: 0.9rem;
-	line-height: 1.6;
+	border-radius: var(--radius-lg);
+	font-family: var(--font-serif);
+	font-size: 1.0625rem;
+	line-height: 1.65;
 }
 .study-guide .rv-box p,
 .study-guide .rv-box ul,
@@ -486,9 +526,9 @@
 	display: block;
 	font-family: var(--font-sans);
 	font-weight: 700;
-	font-size: 0.68rem;
+	font-size: 0.72rem;
 	text-transform: uppercase;
-	letter-spacing: 0.07em;
+	letter-spacing: 0.08em;
 	color: var(--c, var(--muted-foreground));
 	margin-bottom: 0.2rem;
 }
@@ -735,6 +775,53 @@ mark.search-hit {
 mark.sg-hit[data-active='true'] {
 	background: color-mix(in oklab, var(--orange) 55%, transparent);
 	box-shadow: 0 0 0 2px var(--orange);
+}
+
+/* Bar-exam source tag inside a fact pattern. */
+.bar-tag {
+	display: inline-block;
+	margin-right: 0.4rem;
+	padding: 0.05rem 0.45rem;
+	border-radius: 0.35rem;
+	background: color-mix(in oklab, var(--purple) 12%, transparent);
+	color: var(--purple);
+	font-family: var(--font-sans);
+	font-size: 0.7rem;
+	font-weight: 650;
+	letter-spacing: 0.06em;
+	vertical-align: 0.15em;
+}
+
+/* Matches in search results and palettes. */
+.search-results mark,
+.hit-text mark {
+	background: color-mix(in oklab, var(--ring) 22%, transparent);
+	color: inherit;
+	border-radius: 0.15em;
+	padding: 0 0.05em;
+	font-weight: 600;
+}
+
+/* Reader: one topic per section, collapsible. Hidden topics keep their text in the DOM, so highlights stay anchored. */
+.reader .sg-topic {
+	position: relative;
+	padding-top: 2rem;
+	margin-top: 1.25rem;
+	border-top: 1px solid var(--border);
+}
+.reader .sg-topic:first-child {
+	border-top: 0;
+	margin-top: 0;
+	padding-top: 0.5rem;
+}
+.reader .sg-topic .sg-h3 {
+	padding-right: 8.5rem;
+}
+.reader .sg-topic[data-collapsed='true'] > .sg-topic-body > :not(.sg-h3) {
+	display: none;
+}
+.reader .sg-topic[data-collapsed='true'] .sg-h3 {
+	margin-bottom: 0;
 }
 
 /* Model-answer / "watch for" HTML snippets rendered via {@html} */

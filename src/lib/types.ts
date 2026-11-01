@@ -88,6 +88,18 @@ export interface LawModule {
 	cases?: CaseDigest[];
 }
 
+/**
+ * What the app shows as one subject. Most subjects are a single data module; Statutory Construction and Persons &
+ * Family Relations each combine two. The source modules are untouched, so every question, essay, case and highlight
+ * keeps the id it was saved under.
+ */
+export interface Subject extends LawModule {
+	/** The data modules this subject is built from, in reading order. */
+	sources: LawModule[];
+	/** Every module id whose saved progress belongs to this subject (the ids are `<moduleId>:…`). */
+	legacyIds: string[];
+}
+
 export interface UserMcqAttempt {
 	questionId: string;
 	selectedIndex: number;

@@ -17,7 +17,7 @@ export const statcon: LawModule = {
 	],
 	studyGuideIntro: "Chapter 1 — Statutes · Chapter 2 — Construction & Interpretation · Chapter 3 — Aids to Construction · Chapter 4 — Adherence to/Departure from Literal Language · Chapter 5 — Interpretation of Words & Phrases (Agpalo, Statutory Construction). Not a substitute for the full text — use it to review before recitation.",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exception"},{"color":"orange","label":"Exception of the exception"},{"color":"red","label":"Jurisprudence / doctrine"},{"color":"purple","label":"Classification / comparison"}],
-	studyGuideHtml: `<h2 class="sg-h2" id="chapter-1-statutes">Chapter 1 — Statutes</h2>
+	studyGuideHtml: `<h2 class="sg-h2" id="chapter-1-statutes">Chapter I — Statutes</h2>
 <div class="table-scroll"><table class="sg-table">
   <tr><th>Topic</th><th>Rule</th></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Classification</td><td>By <b>scope</b>: public (general application) vs. private (particular persons/rights) — public subdivides into general (whole class), special (particular persons/things of a class or community), and local (confined to a locality). By <b>duration</b>: permanent (indefinite) vs. temporary (fixed duration or event). By <b>application</b>: prospective (applies going forward) vs. retroactive (reaches back to past acts/rights). By <b>operation</b>: directive (guides conduct, no penalty), substantive (creates/defines rights and duties), remedial (provides the means to enforce a right), curative (fixes a past defect), penal (punishes an act). By <b>form</b>: affirmative (states what shall be done) vs. negative (states what shall not be done).</td></tr>
@@ -37,7 +37,7 @@ export const statcon: LawModule = {
   Asked twice in the source reviewer, so expect it on the exam. Before a court can rule on whether a law is constitutional, four things must ALL be present: (1) <b>Actual case or controversy</b> — a real, justiciable dispute, not a hypothetical one; (2) <b>Legal standing (locus standi)</b> — the person questioning the law must have a personal and substantial interest, having sustained or about to sustain direct injury; (3) <b>Earliest opportunity</b> — the constitutional question must be raised at the first real chance to raise it (e.g., in the pleadings or information), not as an afterthought; (4) <b>Necessity of deciding it (lis mota)</b> — the constitutional issue must be the very heart of the case; if the court can decide the case on other grounds, it will avoid ruling on constitutionality altogether. Simple way to remember: <b>Case + Standing + Timing + Necessity.</b>
 </div>
 
-<h2 class="sg-h2" id="chapter-2-construction-and-interpretation">Chapter 2 — Construction and Interpretation</h2>
+<h2 class="sg-h2" id="chapter-2-construction-and-interpretation">Chapter II — Construction and Interpretation</h2>
 <h3 class="sg-h3" id="construction-vs-interpretation">Construction vs. Interpretation</h3>
 <div class="table-scroll"><table class="cmp-table">
   <tr><th>Aspect</th><th>Interpretation</th><th>Construction</th></tr>
@@ -55,7 +55,7 @@ export const statcon: LawModule = {
   <tr><td class="art"><span class="sg-dot" style="background:var(--blue)"></span>Prospectivity</td><td>Abandonment of a doctrine applies prospectively; good-faith reliance on the old, prevailing rule at the time of the act is protected (People v. Jabinal).</td></tr>
 </table></div>
 
-<h2 class="sg-h2" id="chapter-3-aids-to-construction">Chapter 3 — Aids to Construction</h2>
+<h2 class="sg-h2" id="chapter-3-aids-to-construction">Chapter III — Aids to Construction</h2>
 <div class="table-scroll"><table class="sg-table">
   <tr><th>Topic</th><th>Rule</th></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--purple)"></span>Intrinsic vs. extrinsic</td><td>Intrinsic: title, preamble, context, punctuation, capitalization, headnotes, lingual text (found within the statute). Extrinsic: intent/spirit, policy, mischief rule, dictionaries, legislative history, contemporaneous construction (found outside the statute).</td></tr>
@@ -71,7 +71,7 @@ export const statcon: LawModule = {
   <tr><td class="art"><span class="sg-dot" style="background:var(--red)"></span>Contemporaneous construction</td><td>Great weight, unless clearly erroneous or the text is unambiguous (Nestle Phils. v. CA); reenactment of the same language is treated as implied legislative ratification; stare decisis remains the strongest form, abandonable only by the SC en banc.</td></tr>
 </table></div>
 
-<h2 class="sg-h2" id="chapter-4-adherence-to-or-departure-from-literal-language">Chapter 4 — Adherence to, or Departure from, Literal Language</h2>
+<h2 class="sg-h2" id="chapter-4-adherence-to-or-departure-from-literal-language">Chapter IV — Adherence to, or Departure from, Literal Language</h2>
 <div class="table-scroll"><table class="sg-table">
   <tr><th>Topic</th><th>Rule</th></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Verba legis / dura lex sed lex</td><td>A clear statute is applied as written — index animi sermo est, verba legis non est recedendum — the law may be harsh, but it is still the law.</td></tr>
@@ -82,7 +82,7 @@ export const statcon: LawModule = {
   <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Surplusage; number/gender</td><td>Truly redundant words that nullify sense may be disregarded; singular includes plural and vice versa, absent contrary intent.</td></tr>
 </table></div>
 
-<h2 class="sg-h2" id="chapter-5-interpretation-of-words-and-phrases">Chapter 5 — Interpretation of Words and Phrases</h2>
+<h2 class="sg-h2" id="chapter-5-interpretation-of-words-and-phrases">Chapter V — Interpretation of Words and Phrases</h2>
 <div class="table-scroll"><table class="sg-table">
   <tr><th>Maxim</th><th>Rule</th></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--green)"></span>Statutory definitions</td><td>Control over ordinary meaning — unless applying the definition would create incongruity or destroy the specific provision's purpose.</td></tr>

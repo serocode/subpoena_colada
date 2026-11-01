@@ -1,15 +1,10 @@
 <script lang="ts">
+	import { markText } from '$lib/search';
+
+	/** Plain text with the search's words marked; `text` is escaped by markText. */
 	let { text, query = '' }: { text: string; query?: string } = $props();
 
-	const parts = $derived.by(() => {
-		const q = query.trim();
-		if (q.length < 2) return [{ t: text, hit: false }];
-		const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-		return text
-			.split(re)
-			.filter(Boolean)
-			.map((t) => ({ t, hit: t.toLowerCase() === q.toLowerCase() }));
-	});
+	const html = $derived(query.trim().length >= 2 ? markText(text, query) : '');
 </script>
 
-{#each parts as p, i (i)}{#if p.hit}<mark class="search-hit">{p.t}</mark>{:else}{p.t}{/if}{/each}
+{#if html}<span class="hit-text">{@html html}</span>{:else}{text}{/if}
