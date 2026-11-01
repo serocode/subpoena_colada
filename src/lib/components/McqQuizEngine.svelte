@@ -18,7 +18,7 @@
 		Flag,
 		BookOpen
 	} from '@lucide/svelte';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, untrack } from 'svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import Segmented from '$lib/components/common/Segmented.svelte';
 	import { getPart, readHref } from '$lib/content';
@@ -174,15 +174,18 @@
 		examMinutes = Math.max(1, sessionIds.length);
 		confirmSubmit = false;
 	}
-	rebuild();
-	// Arriving at a specific question: show it, even if the filter would have hidden it.
-	if (initialQuestion && byId.has(initialQuestion)) {
-		if (!sessionIds.includes(initialQuestion)) {
-			filter = 'all';
-			rebuild();
+	// One-time setup: the parent remounts the engine (it is keyed) when the topic or target question changes.
+	untrack(() => {
+		rebuild();
+		// Arriving at a specific question: show it, even if the filter would have hidden it.
+		if (initialQuestion && byId.has(initialQuestion)) {
+			if (!sessionIds.includes(initialQuestion)) {
+				filter = 'all';
+				rebuild();
+			}
+			index = Math.max(0, sessionIds.indexOf(initialQuestion));
 		}
-		index = Math.max(0, sessionIds.indexOf(initialQuestion));
-	}
+	});
 
 	function report() {
 		onchange?.({ mode, filter });

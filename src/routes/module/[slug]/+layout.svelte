@@ -20,8 +20,11 @@
 	});
 </script>
 
+<svelte:head>
+	{#if !subject}<title>Subject not found — Subpoena Colada</title>{/if}
+</svelte:head>
+
 {#if !subject}
-	<svelte:head><title>Subject not found — Subpoena Colada</title></svelte:head>
 	<div class="mx-auto max-w-md space-y-4 px-4 py-20 text-center">
 		<h1 class="font-heading text-2xl font-semibold">Subject not found</h1>
 		<p class="text-muted-foreground">There's no subject called “{slug}”.</p>
