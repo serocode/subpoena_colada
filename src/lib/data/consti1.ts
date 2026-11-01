@@ -1,4 +1,5 @@
 import type { LawModule } from '$lib/types';
+import { artIXHtml, artVIIIAddendum, artXHtml, extEssays, extTopics, extWatchFor } from './consti1_ext';
 
 /* Generated from the original static study guide. Edit freely — this file is the source of truth. */
 export const consti1: LawModule = {
@@ -6,16 +7,17 @@ export const consti1: LawModule = {
 	title: "Constitutional Law I",
 	subjectCategory: "Political Law",
 	eyebrow: "1987 Constitution",
-	description: "National territory and state policies, citizenship and suffrage, and the three great departments of government — legislative, executive, and judicial.",
-	legalScope: "1987 Constitution Arts. I, II, IV, V, VI, VII, VIII",
+	description: "National territory and state policies, citizenship and suffrage, the three great departments of government — legislative, executive and judicial — the Constitutional Commissions, and local government.",
+	legalScope: "1987 Constitution Arts. I, II, IV, V, VI, VII, VIII, IX, X",
 	topics: [
 		{"id":"territory_policies","name":"National Territory & State Policies","eyebrow":"ARTS. I & II","desc":"Archipelagic doctrine, elements of a State, self-executing exceptions, protection of the unborn, republicanism."},
 		{"id":"citizenship_suffrage","name":"Citizenship & Suffrage","eyebrow":"ARTS. IV & V","desc":"Modes of acquiring/losing citizenship, natural-born deeming clause, R.A. 9225, foundlings, voter qualifications."},
 		{"id":"legislative","name":"The Legislative Department","eyebrow":"ART. VI","desc":"Senate/House qualifications, party-list, CA confirmation, legislative inquiry, bill passage, veto power."},
 		{"id":"executive","name":"The Executive Department","eyebrow":"ART. VII","desc":"Qualifications & succession, executive privilege, immunity, appointments ban, C-in-C powers, pardon vs. amnesty."},
 		{"id":"judicial","name":"The Judicial Department","eyebrow":"ART. VIII","desc":"Judicial power, judicial review requisites, political question doctrine, JBC, en banc rules, periods to decide."},
+		...extTopics,
 	],
-	studyGuideIntro: "Arts. I, II, IV, V, VI, VII & VIII of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course. Not a substitute for the full text — use it to review before recitation.",
+	studyGuideIntro: "Arts. I, II and IV to X of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course. Not a substitute for the full text — use it to review before recitation.",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exception"},{"color":"orange","label":"Exception of the exception"},{"color":"red","label":"Jurisprudence / doctrine"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="part-i-article-i-the-national-territory">Part I — Article I: The National Territory</h2>
 <div class="table-scroll"><table class="sg-table">
@@ -110,7 +112,7 @@ export const consti1: LawModule = {
   <tr class="sg-row-exoex"><td class="art"><span class="sg-dot" style="background:var(--orange)"></span>Sec. 14</td><td>Decisions must state facts and law clearly — EXCEPT a minute resolution denying reconsideration for lack of merit, provided the court already fully explained its bases earlier in the same case.</td></tr>
   <tr><td class="art"><span class="sg-dot" style="background:var(--yellow)"></span>Sec. 15</td><td>Periods to decide: SC 24 months; lower collegiate courts 12 months; all other lower courts 3 months.</td></tr>
 </table></div>
-<div class="case-card"><div class="cname">Lagman v. Medialdea</div><div class="cdoc">The Court's review of the sufficiency of the factual basis for martial law/suspension of the writ is sui generis — separate from the ordinary grave-abuse-of-discretion standard — and reviews only facts available to the President at the time of proclamation.</div></div>`,
+<div class="case-card"><div class="cname">Lagman v. Medialdea</div><div class="cdoc">The Court's review of the sufficiency of the factual basis for martial law/suspension of the writ is sui generis — separate from the ordinary grave-abuse-of-discretion standard — and reviews only facts available to the President at the time of proclamation.</div></div>` + artVIIIAddendum + artIXHtml + artXHtml,
 	watchFor: {
 		"territory_policies": `<strong>Watch for: exceptions to the exceptions.</strong>
     <ul>
@@ -142,6 +144,7 @@ export const consti1: LawModule = {
       <li>The political question doctrine still yields to the EXPANDED certiorari clause for grave abuse of discretion.</li>
       <li>Sec. 14's "state the facts and law" rule has a named exception for minute resolutions that build on an earlier, fully-explained ruling in the same case.</li>
     </ul>`,
+		...extWatchFor,
 		"all": `<strong>Watch for: exceptions to the exceptions, across every topic.</strong> Several rules that look like blanket exemptions (the Sec. 15 appointments ban, the R.A. 9225 reacquisition oath, the political question doctrine, Art. II's non-self-executing default) carry their own built-in exceptions or additional requirements that defeat or narrow the exemption itself — these are classic examiner traps.`,
 	},
 	mcqs: [
@@ -590,6 +593,7 @@ export const consti1: LawModule = {
 				conclusion: "Mandamus will not lie. The decision whether to transmit the signed treaty to the Senate for concurrence rests solely within the President's discretion.",
 			}
 		},
+		...extEssays,
 	],
 };
 
