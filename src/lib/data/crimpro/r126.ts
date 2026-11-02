@@ -141,7 +141,7 @@ export const r126: RuleChapter = {
 			when: `Forthwith (delivery); 10 days after issuance (judge checks).`,
 			effect: `Contempt of court for violations.`,
 			update: `The Rules on the Use of Body-Worn Cameras in the Execution of Warrants (A.M. No. 21-06-08-SC, 2021) also cover search warrants: per summaries, officers record the search with body-worn and alternative recording devices and submit the recordings to the issuing court.`,
-			verify: `Read A.M. No. 21-06-08-SC for the effect of failing to record a search on the admissibility of the evidence — summaries differ, and Rule 113 in this reviewer treats arrests separately.`
+			verify: `Read A.M. No. 21-06-08-SC for the effect of failing to record a search on the admissibility of the evidence — summaries differ, and arrests are treated separately under Rule 113.`
 		},
 		{
 			n: '13',
@@ -609,7 +609,7 @@ export const r126: RuleChapter = {
 			rule: 'Rule 126; Rule 113, Sec. 5.',
 			hypo: 'A bus conductor tells police a passenger "looks like a drug courier." Without more, a search is invalid.',
 			examQ: 'Is a tip from a third person sufficient basis for a stop-and-frisk?',
-			verify: 'Not in Tiu; checked against summaries for this reviewer.'
+			verify: 'Not in Tiu; checked against summaries.'
 		},
 		{
 			id: 'saluday',
@@ -726,7 +726,7 @@ export const r126: RuleChapter = {
 			issue: 'Validity of a warrantless search based on a tip; effect of failure to object to the arrest before plea.',
 			alac: {
 				answer: 'Yes.',
-				legalBasis: 'Const., Art. III, Secs. 2 and 3(2); Rule 126, Sec. 13 (search incident to a lawful arrest presupposes a prior lawful arrest); Rule 113, Sec. 5 (no overt act); People v. Aruta (1998); People v. Cogaed (2014); People v. Sapla (2020) (a tip alone is not probable cause). Failure to object to an illegal arrest before plea waives the objection to the arrest but not the inadmissibility of evidence seized (as in Rule 113 of this reviewer).',
+				legalBasis: 'Const., Art. III, Secs. 2 and 3(2); Rule 126, Sec. 13 (search incident to a lawful arrest presupposes a prior lawful arrest); Rule 113, Sec. 5 (no overt act); People v. Aruta (1998); People v. Cogaed (2014); People v. Sapla (2020) (a tip alone is not probable cause). Failure to object to an illegal arrest before plea waives the objection to the arrest but not the inadmissibility of evidence seized (see Rule 113).',
 				application: 'N did nothing suspicious; the police acted on the tip alone. The search came before the arrest, so it cannot be incident to it; there was no genuine reason for a stop-and-frisk, no consent, and no moving vehicle. Waiver of the illegal arrest does not cure the illegal search.',
 				conclusion: 'The marijuana is inadmissible; without it, N should be acquitted.'
 			},

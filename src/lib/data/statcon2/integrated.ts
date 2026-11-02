@@ -274,7 +274,7 @@ export function renderIntegratedExam() {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="integrated-exam">Integrated Comprehensive Examination — Chapters VI–XI</h2>`);
 	out.push(
-		`<p class="sg-intro">Take this only after the six chapter practice sets. Every item needs rules from more than one chapter, or a case read across chapters; the chapter tag on each question tells you which. The answer key is a separate section below. Suggested time: 3 hours for the whole examination, or one part per sitting.</p>`
+		`<p class="sg-intro">Every item needs rules from more than one chapter, or a case read across chapters; the chapter tag on each question tells you which. The answer key is a separate section below.</p>`
 	);
 	let n = 0;
 	const numbered = examParts.map((part) => ({ part, items: part.items.map((x) => ({ num: `X.${++n}`, x })) }));

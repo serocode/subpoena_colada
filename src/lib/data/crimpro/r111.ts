@@ -36,7 +36,7 @@ export const r111: RuleChapter = {
 			reqs: `Implied institution: (1) a criminal action instituted; (2) civil liability arising from the offense charged; (3) no waiver, reservation or prior civil action. Reservation: express; before the prosecution presents evidence; with reasonable opportunity.`,
 			who: `Offended party (waives, reserves, files separately, pays fees); accused (cannot counterclaim); court (must rule on civil liability).`,
 			when: `Reservation: before the prosecution starts presenting evidence. Estafa: if the offended party does not manifest within 15 days after the information is filed that the civil liability will be prosecuted separately, fees under Rule 141, Sec. 21(a) are collected (Tiu, p. 55).`,
-			exceptions: `(1) BP 22 — no reservation (Sec. 1[b]), though Tiu notes that waiver or prior institution of the civil action is not prohibited (Lo Bun Tiong v. Balboa). (2) Graft cases in the Sandiganbayan — Tiu (citing Prof. Salvador) lists them as cases where reservation is not allowed. (3) Independent civil actions (Sec. 3) are never deemed instituted.`,
+			exceptions: `(1) BP 22 — no reservation (Sec. 1[b]), though Tiu notes that waiver or prior institution of the civil action is not prohibited (Lo Bun Tiong v. Balboa). (2) Graft cases in the Sandiganbayan — Tiu lists them as cases where reservation is not allowed. (3) Independent civil actions (Sec. 3) are never deemed instituted.`,
 			effect: `The criminal and civil actions merge into one proceeding with the criminal predominating; a conviction must state the civil liability (Hun Hyung Park v. Eun Won Choi, in Tiu). Failure to reserve in time means the civil action ex delicto is tried with the criminal case.`,
 			cases: `${caseLink('hun-hyung-park', 'Hun Hyung Park v. Eun Won Choi')}; ${caseLink('casupanan', 'Casupanan v. Laroya (2002)')}; <i>Lo Bun Tiong v. Balboa</i> (in Tiu, p. 57).`,
 			hypo: `V is injured in a stabbing. The prosecutor files frustrated homicide. V says nothing about the civil action. V's claim for medical expenses and moral damages is deemed instituted; V may present evidence of damages through a private prosecutor, and the judgment of conviction must award them if proven.`,
@@ -166,7 +166,7 @@ export const r111: RuleChapter = {
 			who: 'Heirs or legal representative; guardian ad litem for minor heirs.',
 			when: 'Within 30 days from notice of the court\'s order.',
 			where: 'The court where the civil action (independent or based on other sources) is pending.',
-			missing: 'The civil action cannot proceed against the estate until substitution; Tiu (citing Prof. Salvador) suggests applying Rule 3, Sec. 16 of the Rules of Civil Procedure.',
+			missing: 'The civil action cannot proceed against the estate until substitution; Tiu suggests applying Rule 3, Sec. 16 of the Rules of Civil Procedure.',
 			defect: 'Curable',
 			defectNote: 'Late substitution can be cured by ordering it; a judgment against a deceased party without substitution may be attacked for lack of due process as to the estate.'
 		},

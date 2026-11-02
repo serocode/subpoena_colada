@@ -6,7 +6,7 @@ export const ch7: Chapter = {
 	roman: 'VII',
 	title: 'Strict or Liberal Construction',
 	short: 'Ch. VII — Strict or Liberal Construction',
-	sections: '§§7.01–7.38 (section numbers as used in your earlier guide)',
+	sections: '§§7.01–7.38',
 
 	plain: `How tightly a court reads a statute depends on what kind of statute it is. Laws that punish people, take their property or money, or give someone a special favor are read <b>strictly</b>: nothing beyond what the words clearly say. Laws meant to protect or help people are read <b>liberally</b>: generously, to reach their purpose. Neither approach lets a court rewrite a clear law.`,
 	overview: `<p><b>Part A (§§7.01–7.06)</b> explains what strict and liberal construction mean, what decides which one applies (the statute's nature, its purpose, and the mischief it remedies), and the constitutional mandate of social justice. <b>Part B (§§7.07–7.25)</b> lists the statutes read <b>strictly</b>, and against whom. <b>Part C (§§7.26–7.38)</b> lists the statutes read <b>liberally</b>, and in whose favor.</p>
@@ -44,7 +44,7 @@ export const ch7: Chapter = {
 			plain: 'Read only what the words clearly say; add nothing by implication.',
 			legal: 'Construction according to the letter of the statute, which recognizes nothing that is not expressed, takes the words in their exact meaning, and admits no equitable considerations; the statute\'s scope is not extended by implication, intendment or equity (§7.02).',
 			why: 'Some laws take liberty, property or money, or give special advantages. Their reach should not grow beyond what the legislature clearly said.',
-			example: 'A law punishing one who "assists a claimant" for an excessive fee does not reach a person who merely offered to help (§7.11, per your earlier guide).',
+			example: 'A law punishing one who "assists a claimant" for an excessive fee does not reach a person who merely offered to help (§7.11).',
 			confuse: 'The narrowest possible meaning. Strict construction gives words their fair, exact meaning; it does not shrink them below it.'
 		},
 		{
@@ -276,13 +276,13 @@ export const ch7: Chapter = {
 				{ t: 'Statutes granting tax exemptions', d: '<i>Strictissimi juris</i> against the claimant (§7.20), with the qualifications in §7.21.', s: 'against the taxpayer claiming exemption' },
 				{ t: 'Statutes concerning the sovereign', d: 'Burdensome statutes do not include the State unless it is expressly named (§7.22).', s: 'State not included unless named' },
 				{ t: 'Statutes authorizing suits against the government', d: 'Consent to be sued is strictly construed; no garnishment of public funds (§7.23).', s: 'consent to be sued strictly limited' },
-				{ t: 'Statutes prescribing formalities of wills', d: 'The formalities must be observed (§7.24, per your earlier guide), subject to the substantial-compliance rule for the attestation clause in Art. 809, Civil Code.', s: 'formalities must be followed (subject to Art. 809)' },
+				{ t: 'Statutes prescribing formalities of wills', d: 'The formalities must be observed (§7.24), subject to the substantial-compliance rule for the attestation clause in Art. 809, Civil Code.', s: 'formalities must be followed (subject to Art. 809)' },
 				{ t: 'Exceptions and provisos', d: 'Strictly but reasonably; doubts favor the general rule (§7.25).', s: 'strictly but reasonably, doubts favoring the general rule' }
 			],
 			memory: '<b>"PEP-TSNR + wills & provisos"</b>: Penal · Expropriation & derogation · Privileges & grants · Taxes (impose/exempt) · Sovereign & suits · Naturalization · Removal · Wills · Provisos. Or simply: laws that <b>burden you</b> or <b>give someone a special advantage</b>.',
 			tip: 'An examiner may ask for "at least five." Always add <b>against whom</b>; a list without directions is half an answer. Do not put "grants of powers to LGUs" here: they are liberally construed.',
 			question: 'Enumerate the statutes that are strictly construed, and state against whom each is construed.',
-			verify: 'Your earlier guide marked §7.24 (formalities of wills) as unconfirmed. The Art. 809 qualification is codal law; confirm how Agpalo words the rule.'
+			verify: 'The Art. 809 qualification is codal law; confirm how Agpalo words the rule in §7.24.'
 		},
 		{
 			id: 'E7.3',
@@ -306,7 +306,7 @@ export const ch7: Chapter = {
 			memory: '<b>"Social welfare, LGU powers, Tax prescription, Elections, Amnesty, Crime prescription, Adoption, Pensions, Rules"</b>: everything that <b>protects or forgives</b>.',
 			tip: 'Each item needs "in favor of whom." Never add local tax ordinances here: Sec. 5(b) LGC construes them strictly against the LGU.',
 			question: 'Enumerate the statutes that are liberally construed, and state in whose favor each is construed.',
-			verify: 'Your earlier guide also lists §7.29 (statutes granting taxing power) and §7.31 (penalties for non-payment of tax) in this group. I could not confirm how Agpalo states those two rules, so they are left out. Check your book, and keep them separate from LGC Sec. 5(b).'
+			verify: 'Some lists also place §7.29 (statutes granting taxing power) and §7.31 (penalties for non-payment of tax) in this group; they are left out here. Keep them separate from LGC Sec. 5(b).'
 		},
 		{
 			id: 'E7.4',
@@ -611,30 +611,16 @@ export const ch7: Chapter = {
 			name: 'Republic v. Ablaza',
 			cite: '108 Phil. 1105 (1960)',
 			text: 'The law on prescription of tax assessment and collection, being remedial, is construed liberally to protect the taxpayer.',
-			verify: 'Standard citation for this rule, but I did not check it against the full text this session.'
+			verify: 'Standard citation for this rule; not checked against the full text.'
 		},
 		{
 			kind: 'case',
 			name: 'People v. Moran',
 			cite: '44 Phil. 387 (1923)',
 			text: 'Statutes of limitation on criminal prosecutions are acts of grace, a surrender by the State of its right to prosecute, and are liberally construed in favor of the accused.',
-			verify: 'Standard citation; not checked against the full text this session.'
+			verify: 'Standard citation; not checked against the full text.'
 		},
 		{ kind: 'case', name: 'Magtajas v. Pryce Properties', cite: 'G.R. No. 111097, July 20, 1994', text: 'Petitioners invoked the LGC\'s liberal-construction rules; the Court decided on the clear text ("prohibited games of chance") and the supremacy of the statute over the ordinance. See the five-case section.' }
-	],
-	corrections: [
-		{
-			old: '<i>CIR v. CA</i> (Cenvoco): "A sugar miller claimed a tax credit ..."',
-			fix: 'Central Vegetable Manufacturing Co. (Cenvoco) manufactures edible oil, coconut/copra meal cake and related coconut products subject to the miller\'s tax. It is a coconut-oil miller, not a sugar miller (checked against the decision, G.R. No. 107135).'
-		},
-		{
-			old: '"Formalities of wills (§7.24): strictly construed" with no qualification.',
-			fix: 'Add Art. 809, Civil Code: defects in the form of the attestation clause do not invalidate a will if substantial compliance with Art. 805 is proved, absent bad faith, forgery, fraud or undue influence.'
-		},
-		{
-			old: '§§7.29–7.31 (taxing power; prescriptive period to collect taxes; penalties for non-payment) listed as liberally construed, all marked unconfirmed.',
-			fix: 'Kept §7.30 (prescription to collect taxes: liberal for the taxpayer, <i>Republic v. Ablaza</i>). §§7.29 and 7.31 are flagged in E7.3 for checking. Separately, LGC Sec. 5(b) is codal law: doubtful local tax ordinances are construed strictly against the LGU.'
-		}
 	],
 
 	caseNote: '<i>Manila Lodge</i> is the Chapter VII case: it applied strict construction of a public grant (§7.16) and of municipal powers. In <i>Magtajas</i>, the petitioners invoked the LGC\'s liberal-construction rule, which the Court never needed because the text was clear. <i>Catiis</i> and <i>Corona</i> are consistent with Chapter VII rules (penal statutes; removal of officials), but the Court did not rest on them.',

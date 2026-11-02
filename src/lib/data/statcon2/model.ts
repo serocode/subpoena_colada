@@ -108,11 +108,6 @@ export interface Authority {
 	verify?: string;
 }
 
-export interface Correction {
-	old: string;
-	fix: string;
-}
-
 export interface CaseLink {
 	caseId: CaseId;
 	strength: 'Direct — the Court applied it' | 'Supporting — consistent, partly relied on' | 'Not invoked — exam point only';
@@ -186,7 +181,6 @@ export interface Chapter {
 	reqs: Requisite[];
 	comparisons: Comparison[];
 	authorities: Authority[];
-	corrections?: Correction[];
 	caseLinks: CaseLink[];
 	caseNote?: string;
 	traps: Trap[];
@@ -282,7 +276,7 @@ export function renderEnumeration(e: Enumeration) {
 <p class="rv-card-title"><span class="rv-num">${e.id}</span> ${e.name}</p>
 <p class="rv-meta">${badge(KIND_LABEL[e.kind], e.kind === 'teaching' ? 'neutral' : 'yellow')}${e.ordered ? badge('Order matters', 'green') : ''}${e.memorize ? badge('Must memorize', 'red') : ''}${badge(`${items.length} items`)}</p>
 <p class="rv-source"><b>Legal basis / source:</b> ${e.source}</p>
-${e.verify ? box('orange', 'Verify before reciting', e.verify) : ''}
+${e.verify ? box('orange', 'Verify', e.verify) : ''}
 ${h4('Complete list')}${skeleton}
 ${h4('Brief discussion of each item')}${discussion}
 ${e.memory ? box('yellow', 'Memory aid', p(e.memory)) : ''}
@@ -441,7 +435,7 @@ export function renderChapter(ch: Chapter) {
 	// 4. Enumerations
 	out.push(h3(id('enumerations'), '4 · Enumerations with brief discussion'));
 	out.push(
-		`<p class="sg-intro">Every list your examiner can ask for in this chapter. "Study grouping" lists are teaching aids. Do not tell an examiner a study grouping is an official list.</p>`
+		`<p class="sg-intro">Every list in this chapter. "Study grouping" lists are teaching aids, not official lists.</p>`
 	);
 	out.push(...ch.enums.map(renderEnumeration));
 
@@ -475,15 +469,6 @@ export function renderChapter(ch: Chapter) {
 		out.push(h4('Jurisprudence and authorities cited for this chapter'));
 		out.push(table(['Authority', 'What it stands for'], cases.map((a) => [`<b>${a.name}</b>${a.cite ? `<br><span class="rv-cite">${a.cite}</span>` : ''}`, `${a.text}${a.verify ? `<p class="rv-verify">⚠ ${a.verify}</p>` : ''}`])));
 	}
-	if (ch.corrections?.length) {
-		out.push(
-			box(
-				'orange',
-				'Corrections to your earlier guide',
-				ul(ch.corrections.map((c) => `<b>Earlier guide:</b> ${c.old}<br><b>Corrected:</b> ${c.fix}`))
-			)
-		);
-	}
 
 	// 8. Case connections
 	out.push(h3(id('cases'), '8 · Connections to the five assigned cases'));
@@ -510,7 +495,7 @@ export function renderChapter(ch: Chapter) {
 	// 10. Practice
 	out.push(h3(id('practice'), '10 · Practice problems'));
 	out.push(
-		`<p class="sg-intro">Chapter ${ch.roman} only. Sets run from easiest to hardest (Level 1 recall → Level 5 integration); the category letters match the question types in your exam brief. Write your answer before opening the answer key in part 11. Every application problem is also in the <b>ALAC Essay Exercises</b> tab, and every true-or-false item is also in the <b>MCQ Practice Engine</b>.</p>`
+		`<p class="sg-intro">Sets run from easiest to hardest (Level 1 recall → Level 5 integration).</p>`
 	);
 	out.push(renderPracticeSets(P, ch.practice));
 
@@ -526,8 +511,8 @@ export function renderChapter(ch: Chapter) {
 	out.push(table(['List', 'Items (reproduce these without looking)', 'Source'], must.map((e) => [`<b>${e.id}</b> ${e.name}`, ol(e.items.map((i) => i.t)), e.source])));
 	out.push(h4('Memory aids'));
 	out.push(table(['For', 'Aid'], ch.memoryAids.map(([k, v]) => [`<b>${k}</b>`, v])));
-	out.push(h4('Flashcards'), `<p class="sg-intro">Say the answer aloud, then tap to check.</p>`, flashcards(ch.flashcards));
-	out.push(h4('Active-recall drill — questions'), `<p class="sg-intro">Close your notes. Answer all of these first, then check the answers below.</p>`, ol(ch.recall.map(([q]) => q), 'rv-recall'));
+	out.push(h4('Flashcards'), flashcards(ch.flashcards));
+	out.push(h4('Active-recall drill — questions'), ol(ch.recall.map(([q]) => q), 'rv-recall'));
 	out.push(h4('Active-recall drill — answers'), ol(ch.recall.map(([, a]) => a), 'rv-recall'));
 
 	// 13. Summary

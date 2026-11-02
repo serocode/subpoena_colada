@@ -29,7 +29,7 @@ export function renderCaseReview(rules: RuleChapter[]) {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="case-review">Case Law Review — by Rule</h2>`);
 	out.push(
-		`<p class="sg-intro">Every case digested in this reviewer, grouped by the Rule where its full digest sits, with its core doctrine in one line and the other Rules it bears on. Click a case to open its full digest (facts, issue, ruling, doctrine, reasoning, arguments not adopted, hypothetical and likely exam question). "Tiu" = digested from the notes; "Checked" = read against the decision or a reliable summary; "Verify" = a citation or fact still to be confirmed.</p>`
+		`<p class="sg-intro">Every case digested in the Rule chapters, grouped by the Rule where its full digest sits, with its core doctrine in one line and the other Rules it bears on. Each links to its full digest (facts, issue, ruling, doctrine, reasoning, arguments not adopted, hypothetical and likely exam question). "Tiu" = digested from the notes; "Checked" = read against the decision or a reliable summary; "Verify" = a citation or fact still to be confirmed.</p>`
 	);
 	const head = ['Case', 'Core doctrine', 'Also relevant to', 'Source'];
 	for (const r of rules) {

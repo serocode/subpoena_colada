@@ -1,7 +1,6 @@
 import type { LawModule } from '$lib/types';
 import { artIXHtml, artVIIIAddendum, artXHtml, extEssays, extTopics, extWatchFor } from './consti1_ext';
 
-/* Generated from the original static study guide. Edit freely — this file is the source of truth. */
 export const consti1: LawModule = {
 	id: "consti1",
 	title: "Constitutional Law I",
@@ -17,7 +16,7 @@ export const consti1: LawModule = {
 		{"id":"judicial","name":"The Judicial Department","eyebrow":"ART. VIII","desc":"Judicial power, judicial review requisites, political question doctrine, JBC, en banc rules, periods to decide."},
 		...extTopics,
 	],
-	studyGuideIntro: "Arts. I, II and IV to X of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course. Not a substitute for the full text — use it to review before recitation.",
+	studyGuideIntro: "Arts. I, II and IV to X of the 1987 Constitution. Art. III (Bill of Rights) excluded — separate course.",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exception"},{"color":"orange","label":"Exception of the exception"},{"color":"red","label":"Jurisprudence / doctrine"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="part-i-article-i-the-national-territory">Part I — Article I: The National Territory</h2>
 <div class="table-scroll"><table class="sg-table">

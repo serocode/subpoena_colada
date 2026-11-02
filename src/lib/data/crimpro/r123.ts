@@ -67,7 +67,7 @@ export const r123: RuleChapter = {
 		{
 			id: 'E123.2',
 			name: 'Provisions in Rules 110–122 that work differently in first-level courts',
-			source: 'Rules 110, 112, 114, 120, 122 (as cross-referenced in this reviewer)',
+			source: 'Rules 110, 112, 114, 120, 122 (as cross-referenced in the Rule chapters)',
 			kind: 'teaching',
 			lead: 'Provisions specific to first-level courts include',
 			items: [
@@ -77,7 +77,7 @@ export const r123: RuleChapter = {
 				{ t: 'Bail as a matter of right before and after conviction', d: 'Rule 114, Sec. 4.', s: 'bail always a matter of right' },
 				{ t: 'Appeal to the RTC, decided on the record and memoranda', d: 'Rule 122, Secs. 2(a) and 9; withdrawal in the RTC before judgment (Sec. 12).', s: 'appeal to RTC on memoranda' }
 			],
-			tip: 'This is a teaching list built for this reviewer, not a list in Rule 123.',
+			tip: 'A teaching list, not a list in Rule 123.',
 			question: 'Give examples of provisions in the Rules of Criminal Procedure that apply differently in the first-level courts.'
 		}
 	],

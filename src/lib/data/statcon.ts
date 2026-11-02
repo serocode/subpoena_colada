@@ -1,6 +1,5 @@
 import type { LawModule } from '$lib/types';
 
-/* Generated from the original static study guide. Edit freely — this file is the source of truth. */
 export const statcon: LawModule = {
 	id: "statcon",
 	title: "Statutory Construction",
@@ -15,7 +14,7 @@ export const statcon: LawModule = {
 		{"id":"ch4","name":"Adherence to / Departure from Literal Language","eyebrow":"AGPALO · CHAPTER 4","desc":"Verba legis & dura lex sed lex; when courts may depart from literal wording; ratio legis; necessary implication; correcting clerical errors; surplusage."},
 		{"id":"ch5","name":"Interpretation of Words & Phrases","eyebrow":"AGPALO · CHAPTER 5","desc":"Statutory definitions; noscitur a sociis; ejusdem generis; expressio unius; casus omissus; last antecedent; reddendo singula singulis; proviso vs. exception."},
 	],
-	studyGuideIntro: "Chapter 1 — Statutes · Chapter 2 — Construction & Interpretation · Chapter 3 — Aids to Construction · Chapter 4 — Adherence to/Departure from Literal Language · Chapter 5 — Interpretation of Words & Phrases (Agpalo, Statutory Construction). Not a substitute for the full text — use it to review before recitation.",
+	studyGuideIntro: "Chapter 1 — Statutes · Chapter 2 — Construction & Interpretation · Chapter 3 — Aids to Construction · Chapter 4 — Adherence to/Departure from Literal Language · Chapter 5 — Interpretation of Words & Phrases (Agpalo, Statutory Construction).",
 	legend: [{"color":"yellow","label":"Key provision / memorize"},{"color":"green","label":"Requisite"},{"color":"blue","label":"Exception"},{"color":"orange","label":"Exception of the exception"},{"color":"red","label":"Jurisprudence / doctrine"},{"color":"purple","label":"Classification / comparison"}],
 	studyGuideHtml: `<h2 class="sg-h2" id="chapter-1-statutes">Chapter I — Statutes</h2>
 <div class="table-scroll"><table class="sg-table">

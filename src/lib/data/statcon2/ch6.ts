@@ -6,7 +6,7 @@ export const ch6: Chapter = {
 	roman: 'VI',
 	title: 'Statute Construed as a Whole and in Relation to Other Statutes',
 	short: 'Ch. VI — Statute as a Whole & Other Statutes',
-	sections: '§§6.01–6.28 (section numbers as used in your earlier guide)',
+	sections: '§§6.01–6.28',
 
 	plain: `A statute is one piece of legislation, so you read each word in light of every other word in it. A statute also sits among other laws: the Constitution above it and other statutes beside it. So you read it in harmony with those too. The whole chapter rests on one presumption: <b>the legislature means its laws to fit together.</b>`,
 	overview: `<p>Chapter VI has two halves. <b>Part A (§§6.01–6.13)</b> looks <i>inward</i>: how to read one provision in light of the rest of the same statute, how to reconcile provisions that seem to clash, and why no word should be left useless. <b>Part B (§§6.14–6.28)</b> looks <i>outward</i>: how to read a statute in harmony with the Constitution, with other statutes on the same subject (statutes <i>in pari materia</i>), with general or special laws, and with laws it refers to, supplements, reenacts or copies.</p>
@@ -52,7 +52,7 @@ export const ch6: Chapter = {
 			plain: 'If two parts of a law seem to clash, look for a reading under which both work.',
 			legal: 'Apparently conflicting provisions of the same statute must be reconciled and harmonized so that each is given effect (§6.05).',
 			why: 'The legislature is presumed not to enact contradictory provisions in one law; consistency is "of prime importance" (§6.08).',
-			example: 'One provision: medical board members are appointed from a list submitted by the PMA. Another allows reappointment of members whose terms expired. Read together, a member being <i>reappointed</i> need not be on a fresh PMA list (Agpalo\'s illustration in §6.05, per your earlier guide).',
+			example: 'One provision: medical board members are appointed from a list submitted by the PMA. Another allows reappointment of members whose terms expired. Read together, a member being <i>reappointed</i> need not be on a fresh PMA list (Agpalo\'s illustration in §6.05).',
 			confuse: 'Choosing between provisions. Choosing is the fallback; reconciling comes first.'
 		},
 		{
@@ -214,7 +214,7 @@ export const ch6: Chapter = {
 			basis: 'Agpalo §§6.23–6.28; <i>Manila Jockey Club v. CA</i>; <i>Montelibano v. Ferrer</i>, 97 Phil. 228 (1955).',
 			why: 'Each rule tracks what the legislature is presumed to have intended when it borrowed, added to, repeated, or copied existing law.',
 			when: 'The statute points to another law, fills a gap in it, repeats it, or copies a foreign model.',
-			limits: 'Reenactment rule: only if the statute is capable of the construction and the construction had become a settled rule of conduct (§6.27 in your earlier guide); it never freezes a reading that clearly conflicts with legislative intent. Reference statute: later amendments to the referred law are not included unless the adopting law expressly provides.',
+			limits: 'Reenactment rule: only if the statute is capable of the construction and the construction had become a settled rule of conduct (§6.27); it never freezes a reading that clearly conflicts with legislative intent. Reference statute: later amendments to the referred law are not included unless the adopting law expressly provides.',
 			differs: 'Reenacted vs. adopted: domestic vs. foreign source. Reference vs. supplemental: borrows vs. adds.',
 			example: 'Science Stamp Tax Act (reference); E.O. 88–89 and R.A. 309 (supplemental); Bacolod Charter copying the Manila Charter (reenacted).'
 		}
@@ -224,7 +224,7 @@ export const ch6: Chapter = {
 		{
 			id: 'E6.1',
 			name: 'Steps when two provisions of the same statute appear to conflict',
-			source: 'Agpalo §6.05 (and §10.12 for codes), as summarized in your earlier guide.',
+			source: 'Agpalo §6.05 (and §10.12 for codes).',
 			kind: 'book',
 			ordered: true,
 			memorize: true,
@@ -250,7 +250,7 @@ export const ch6: Chapter = {
 			memory: '<b>R-P-L: Reconcile → Purpose → Last.</b> You only move right when the step before it fails.',
 			tip: 'Keywords: "reconcile and harmonize," "general plan and purpose," "last in position," "latest expression of the legislative will." Common mistakes: starting with step 3; applying "last in position" to two <i>different</i> statutes (between statutes use <i>generalia specialibus</i> and <i>leges posteriores</i>).',
 			question: 'Two provisions of the same statute appear to be in conflict. How should the court resolve the conflict? Enumerate the steps in order and explain each briefly.',
-			verify: 'Your earlier guide states this three-step order for §6.05, and the same order appears for codes in §10.12. Confirm the exact wording of step 2 in your copy of Agpalo before quoting it.'
+			verify: 'The same three-step order appears for codes in §10.12. Confirm the exact wording of step 2 in Agpalo before quoting it.'
 		},
 		{
 			id: 'E6.2',
@@ -371,7 +371,7 @@ export const ch6: Chapter = {
 		{
 			id: 'E6.6',
 			name: 'Conditions for the reenactment rule',
-			source: 'Agpalo §§6.25–6.27 (items 3–4 are the limits stated in §6.27 of your earlier guide; items 1–2 are what the rule presupposes).',
+			source: 'Agpalo §§6.25–6.27 (items 3–4 are the limits stated in §6.27; items 1–2 are what the rule presupposes).',
 			kind: 'teaching',
 			lead: 'A reenacted statute is presumed to carry its prior construction only when',
 			items: [
@@ -468,7 +468,7 @@ export const ch6: Chapter = {
 		},
 		{
 			name: '"Last in position prevails"',
-			source: 'Agpalo §6.05 (as summarized in your earlier guide); §10.12 for codes.',
+			source: 'Agpalo §6.05; §10.12 for codes.',
 			what: ul([
 				'The conflicting provisions are in the <b>same statute</b> (or code).',
 				'They are <b>irreconcilable</b> after a genuine attempt to harmonize.',
@@ -615,21 +615,11 @@ export const ch6: Chapter = {
 			name: 'Montelibano v. Ferrer',
 			cite: '97 Phil. 228 (1955)',
 			text: 'Reenacted statute: a provision of the Manila Charter on the city fiscal, already construed by the Court, was reproduced in the Bacolod Charter, and the same construction was presumed adopted.',
-			verify: 'Facts as summarized in your earlier guide; I could not check them against the full decision. Read the case before reciting the facts.'
+			verify: 'Facts not checked against the full decision.'
 		},
 		{ kind: 'case', name: 'Lichauco & Co. v. Apostol', cite: '44 Phil. 138', text: 'The intent to repeal a former law will not be imputed when the two statutes bear to each other the relation of general to special. Quoted in <i>Magtajas</i>.' },
 		{ kind: 'case', name: 'NAPOCOR v. Presiding Judge; Lagman v. City of Manila', cite: '190 SCRA 477 (1990); 17 SCRA 579 (1966)', text: 'A later special law repugnant to a prior general law on the same subject impliedly repeals it to the extent of the inconsistency, or is grafted as an exception onto it. Cited in <i>Corona</i>.' },
-		{ kind: 'book', name: 'Agpalo, Statutory Construction (6th ed.)', cite: '§§6.01–6.28', text: 'Primary source for this chapter. Section numbers follow your earlier guide; confirm them against your copy.' }
-	],
-	corrections: [
-		// {
-		// 	old: 'Cross-reference to "Tumabini v. People" as applying the special–general principle between R.A. 9165 Sec. 21 and Rule 126.',
-		// 	fix: 'Removed. I could not verify that case or that holding. Do not cite it until you have read it.'
-		// },
-		{
-			old: 'The harmonization maxim quoted as printed in Corona ("Interpretare et concordare legibus est optimus interpretandi").',
-			fix: 'Standard form: <i>interpretare et concordare leges legibus est optimus interpretandi modus</i>. Recite the standard form and mention that Corona prints a shortened version.'
-		}
+		{ kind: 'book', name: 'Agpalo, Statutory Construction (6th ed.)', cite: '§§6.01–6.28', text: 'Primary source for this chapter.' }
 	],
 
 	caseNote: 'All five cases use a Chapter VI rule. <b>One statute read as a whole:</b> <i>Catiis</i> (one sentence and the next paragraph), <i>Aquino</i> (a whole chapter), <i>Manila Lodge</i> (every section of Act No. 1360). <b>Two statutes read together:</b> <i>Corona</i> (later special law over earlier general law, harmonized) and <i>Magtajas</i> (earlier special law survives later general law, harmonized).',

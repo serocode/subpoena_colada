@@ -1,5 +1,5 @@
 /*
- * Part IX — consolidated high-yield comparisons. The sixteen pairs in the brief are indexed here with their decisive
+ * Part IX — consolidated high-yield comparisons. Sixteen high-yield pairs are indexed here with their decisive
  * distinction and a link to the full nine-row table in the Rule chapter where each lives. The one pair not covered in a
  * chapter (formal vs. substantive defects of the information) is written out in full here.
  */
@@ -27,7 +27,7 @@ const formalVsSubstantive: Comparison = {
 	hypo: 'An information for theft misstates the date by a week and omits the provision violated (formal — no effect if not objected to). Another fails to allege that the property belonged to another (substantive — no offense charged; quashable even after plea, though the prosecution may first amend).'
 };
 
-/** The sixteen pairs required by the brief, mapped to the comparison id that covers each. */
+/** The sixteen high-yield pairs, mapped to the comparison id that covers each. */
 const pairs: [string, string][] = [
 	['Complaint vs. information', 'C110.1'],
 	['Filing (in court) vs. institution', 'C110.4'],
@@ -57,7 +57,7 @@ export function renderComparisons(rules: RuleChapter[]) {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="comparisons">High-Yield Comparisons — Consolidated</h2>`);
 	out.push(
-		`<p class="sg-intro">The sixteen comparisons in your brief, each with its decisive distinction. Click a pair for the full table (meaning, legal basis, who may act, when, requirements, time limits, exceptions, consequences, exam trap, and a hypothetical showing how the difference changes the result).</p>`
+		`<p class="sg-intro">Sixteen high-yield comparisons, each with its decisive distinction. Each pair links to the full table (meaning, legal basis, who may act, when, requirements, time limits, exceptions, consequences, exam trap, and a hypothetical showing how the difference changes the result).</p>`
 	);
 	out.push(h3('comparisons-index', 'The sixteen pairs at a glance'));
 	out.push(
@@ -75,7 +75,7 @@ export function renderComparisons(rules: RuleChapter[]) {
 			})
 		)
 	);
-	out.push(h3('comparisons-more', 'Other comparisons in this reviewer'));
+	out.push(h3('comparisons-more', 'Other comparisons'));
 	const listed = new Set(pairs.map(([, id]) => id));
 	const others = [...all.values()].filter((c) => !listed.has(c.id));
 	out.push(
@@ -90,7 +90,7 @@ export function renderComparisons(rules: RuleChapter[]) {
 		box(
 			'yellow',
 			'How to answer any compare-and-contrast question',
-			p('Define each term in one sentence with its legal basis. Give three or four differences in parallel form (who, when, requirements, effect). End with the decisive distinction and a one-line example showing how the result changes. A table is acceptable if your examiner allows it; otherwise use parallel sentences.')
+			p('Define each term in one sentence with its legal basis. Give three or four differences in parallel form (who, when, requirements, effect). End with the decisive distinction and a one-line example showing how the result changes.')
 		)
 	);
 	return out.join('\n');

@@ -1,5 +1,5 @@
 /*
- * Front matter ("Start Here") and the Final Master Review Sheets. The master lists are generated from the
+ * Front matter (contents, topic map, the five cases at a glance, points to verify) and the Final Master Review Sheets. The master lists are generated from the
  * chapter and case data so they can never disagree with the detailed chapters.
  */
 import { badge, box, CASE_NAMES, flashcards, h3, h4, ol, plain, table, ul, type Chapter } from './model';
@@ -8,24 +8,12 @@ import { examItems } from './integrated';
 
 const chapterLink = (c: Chapter, part?: string, label?: string) => `<a href="#${part ? `${c.id}-${part}` : c.id}">${label ?? `Chapter ${c.roman} — ${c.title}`}</a>`;
 
-/* ------------------------------------------------------------------ Start Here */
+/* ------------------------------------------------------------------ Contents and topic map */
 
 export function renderStart(chapters: Chapter[], cases: CaseStudy[]) {
 	const out: string[] = [];
-	out.push(`<h2 class="sg-h2" id="start-here">Start Here</h2>`);
-	out.push(`<p class="sg-intro">How this reviewer is organized, what it was built from, and what was checked.</p>`);
+	out.push(`<h2 class="sg-h2" id="start-here">Contents and Topic Map — Chapters VI–XI</h2>`);
 
-	out.push(h3('start-how', 'How to use this reviewer'));
-	out.push(
-		ol([
-			'<b>One chapter at a time.</b> Each chapter has the same 13 parts. Read parts 1–9, answer part 10 on paper, then check part 11.',
-			'<b>Lock it in.</b> Use part 12 (must-memorize lists, memory aids, flashcards, active recall). Do not move on until you can tick every box in part 13.',
-			'<b>Then the five cases.</b> Each case has a timeline, a full digest, the ratio, a plain-English version, your index card, recitation questions and exam questions.',
-			'<b>Then the integrated examination</b>, which mixes chapters. Its answer key is a separate section.',
-			'<b>Last: the Final Master Review Sheets</b>, a compressed version of everything for the night before.',
-			'<b>Practice inside the app.</b> Every true-or-false item and the case recall drill are in the <b>MCQ Practice Engine</b> tab (filter by chapter). Every ALAC hypothetical is in the <b>ALAC Essay Exercises</b> tab, where you can write your answer and compare it with the model.'
-		])
-	);
 	out.push(
 		box(
 			'neutral',
@@ -34,24 +22,16 @@ export function renderStart(chapters: Chapter[], cases: CaseStudy[]) {
 				`${badge('Yellow', 'yellow')} rules to memorize and memory aids`,
 				`${badge('Green', 'green')} requisites, tests, short exam answers and model answers`,
 				`${badge('Blue', 'blue')} exceptions, limits, provisions and "why the other view is weaker"`,
-				`${badge('Orange', 'orange')} exam traps and items to verify before reciting`,
+				`${badge('Orange', 'orange')} exam traps and items to verify`,
 				`${badge('Red', 'red')} case doctrine`,
 				`${badge('Purple', 'purple')} application-level (Level 4–5) questions`
 			])
-		)
-	);
-	out.push(
-		box(
-			'orange',
-			'Honest limits',
-			`<p>I did not have your copy of Agpalo. Chapter content and section numbers follow your earlier study guide, which was built from Agpalo\'s table of contents. Where a rule, citation or case detail could not be confirmed, it carries a <b>Verify</b> note: check those before reciting them as Agpalo\'s exact words. Nothing in the five-case section goes beyond your case-digest PDF. A handful of points were checked against primary sources (see the verification log).</p>`
 		)
 	);
 
 	out.push(h3('start-toc', 'Table of contents'));
 	out.push(
 		ol([
-			'<a href="#start-here">Start Here</a> — how to use, contents, materials, topic map, cases at a glance, verification log',
 			...chapters.map(
 				(c) =>
 					`${chapterLink(c)}<br><span class="rv-cite">${[
@@ -73,23 +53,11 @@ export function renderStart(chapters: Chapter[], cases: CaseStudy[]) {
 		])
 	);
 
-	// out.push(h3('start-inventory', 'Inventory of the materials used'));
-	// out.push(
-	// 	table(
-	// 		['Material', 'What it contains', 'How it was used'],
-	// 		[
-	// 			['<b>StatCon_Ch6-11_Study_Guide.pdf</b> (your earlier guide, 26 pp.)', 'Agpalo Chapters VI–XI with section references, color-coded rules, Agpalo\'s illustrative cases, cheat sheets and trick questions; items marked ◇ as unconfirmed.', 'Primary outline and source of section numbers. Reorganized into the 13-part structure; expanded; errors corrected (see the log); ◇ items checked where possible or kept with a Verify note.'],
-	// 			['<b>StatCon_Case_Digests_october.pdf</b> (31 pp.)', 'The five assigned cases, digested from the full decisions: facts, issues, rulings, construction rationale, canons table and index-card versions.', 'Sole source for the Five-Case Mastery section and the chapter case connections. No facts were added beyond it.'],
-	// 			['<b>Existing "Statutory Construction" module</b> (Agpalo Chs. 1–5, in this app)', 'Statutes; construction and interpretation; aids; literal language; words and phrases.', 'Not changed. Referred to where a case uses a Chapter IV–V canon (verba legis, noscitur a sociis, expressio unius).'],
-	// 			['<b>Primary sources checked this session</b>', 'Revised Penal Code, Art. 22 (LawPhil); <i>CIR v. CA</i>, G.R. No. 107135 (Cenvoco); <i>Yapdiangco v. Buencamino</i>, G.R. No. L-28841; <i>Director of Lands v. CA</i>, G.R. No. 102858; <i>Co v. CA</i>, G.R. No. 100776; <i>Querubin v. CA</i>, G.R. No. L-2581.', 'Used to correct or confirm specific statements. The rule on reviving a repealed law was checked only against a secondary source.']
-	// 		]
-	// 	)
-	// );
 
 	out.push(h3('start-map', 'Chapters VI–XI topic map'));
 	out.push(
 		table(
-			['Chapter', 'Agpalo sections', 'Key concepts', 'Five cases used', 'In this reviewer'],
+			['Chapter', 'Agpalo sections', 'Key concepts', 'Five cases used', 'Study material'],
 			chapters.map((c) => [
 				chapterLink(c),
 				c.sections.replace(/ \(.*\)$/, ''),
@@ -109,18 +77,12 @@ export function renderStart(chapters: Chapter[], cases: CaseStudy[]) {
 		)
 	);
 
-	out.push(h3('start-verify', 'Verification log'));
-	out.push(`<p class="sg-intro">Corrections made to your earlier materials, chapter by chapter, then the items still marked "Verify."</p>`);
-	for (const c of chapters) {
-		if (!c.corrections?.length) continue;
-		out.push(h4(`Chapter ${c.roman}`));
-		out.push(table(['Earlier guide said', 'Corrected or clarified'], c.corrections.map((x) => [x.old, x.fix])));
-	}
+	out.push(h3('start-verify', 'Points to verify'));
 	const flagged = chapters.flatMap((c) => [
 		...c.enums.filter((e) => e.verify).map((e) => `Ch. ${c.roman}, <a href="#${e.id.toLowerCase().replace(/\./g, '-')}">${e.id}</a> ${e.name}`),
 		...c.authorities.filter((a) => a.verify).map((a) => `Ch. ${c.roman}, ${chapterLink(c, 'authorities', a.name)}`)
 	]);
-	out.push(h4(`Items still marked "Verify" (${flagged.length})`));
+	out.push(`<p class="sg-intro">${flagged.length} rules and authorities not confirmed against Agpalo's exact text or the full decision.</p>`);
 	out.push(ul(flagged));
 	return out.join('\n');
 }
@@ -162,7 +124,6 @@ const crossDrill: [string, string][] = [
 export function renderReview(chapters: Chapter[], cases: CaseStudy[]) {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="master-review">Final Master Review Sheets</h2>`);
-	out.push(`<p class="sg-intro">Generated from the chapters and cases above, so they always match. Use after you have studied each chapter; these sheets compress it, they do not replace it.</p>`);
 
 	// A. Master enumeration list
 	out.push(h3('master-enums', 'Master enumeration list'));
@@ -303,7 +264,7 @@ export function renderReview(chapters: Chapter[], cases: CaseStudy[]) {
 		])
 	);
 	out.push(
-		`<p class="sg-intro">Totals in this reviewer: ${chapters.reduce((n, c) => n + c.enums.length, 0)} enumerations · ${chapters.reduce((n, c) => n + c.comparisons.length, 0)} comparison tables · ${chapters.reduce((n, c) => n + c.practice.length, 0)} chapter practice items · ${examItems().length} integrated-exam items · ${cases.reduce((n, c) => n + c.exam.length + c.recitation.length, 0)} case questions · ${chapters.reduce((n, c) => n + c.flashcards.length, 0) + crossDrill.length} flashcards.</p>`
+		`<p class="sg-intro">Totals: ${chapters.reduce((n, c) => n + c.enums.length, 0)} enumerations · ${chapters.reduce((n, c) => n + c.comparisons.length, 0)} comparison tables · ${chapters.reduce((n, c) => n + c.practice.length, 0)} chapter practice items · ${examItems().length} integrated-exam items · ${cases.reduce((n, c) => n + c.exam.length + c.recitation.length, 0)} case questions · ${chapters.reduce((n, c) => n + c.flashcards.length, 0) + crossDrill.length} flashcards.</p>`
 	);
 	return out.join('\n');
 }

@@ -584,7 +584,7 @@ export const r114: RuleChapter = {
 			args: 'The prosecution argued that bail could be granted only after a hearing finding that evidence of guilt was not strong; the majority granted bail on other considerations — a point criticized by the dissent.',
 			hypo: 'A 25-year-old healthy accused charged with plunder invokes Enrile. The ruling is tied to its peculiar facts; he must still show that evidence of guilt is not strong.',
 			examQ: 'May bail be granted to an accused charged with an offense punishable by reclusion perpetua without a finding that evidence of guilt is not strong? Discuss Enrile.',
-			verify: 'Facts and holding stated from general knowledge of the case; Tiu cites it for the purpose of bail and the amount. Read the decision before reciting details.'
+			verify: 'Facts and holding stated from general knowledge of the case; Tiu cites it for the purpose of bail and the amount.'
 		},
 		{
 			id: 'leviste',

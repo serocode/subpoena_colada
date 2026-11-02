@@ -46,7 +46,12 @@
 	const legend = $derived(legendFor(subject, part));
 	const firstOfSource = $derived(!!part && parts.find((p) => p.sourceId === part.sourceId) === part);
 	const intro = $derived(firstOfSource ? introFor(subject, part) : undefined);
-	const key = (unit: string) => unitKey(subject.id, partId, unit);
+	const key = (unit: string) => unitKey(subject.id, part?.id ?? partId, unit);
+
+	// A renamed part (old link or bookmark): move to its current URL.
+	$effect(() => {
+		if (part && part.id !== partId) goto(`${readHref(subject.id, part.id)}${page.url.search}${page.url.hash}`, { replace: true });
+	});
 
 	// ---- collapsing topics (preference decides the starting state; targets of a link always open) ----
 	let collapsed = $state<Record<string, boolean>>({});
@@ -145,7 +150,7 @@
 		const h = userStorage.highlights[id];
 		if (!h) return;
 		const target = partForScope(subject, h.scope);
-		if (target && target.id !== partId) {
+		if (target && target.id !== part?.id) {
 			goto(`${readHref(subject.id, target.id)}?hl=${encodeURIComponent(id)}`);
 			return;
 		}

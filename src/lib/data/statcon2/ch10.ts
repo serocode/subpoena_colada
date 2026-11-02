@@ -6,7 +6,7 @@ export const ch10: Chapter = {
 	roman: 'X',
 	title: 'Amendment, Revision, Codification and Repeal',
 	short: 'Ch. X — Amendment, Revision & Repeal',
-	sections: '§§10.01–10.41 (section numbers as used in your earlier guide)',
+	sections: '§§10.01–10.41',
 
 	plain: `Laws change in three ways. They are <b>amended</b> (some words changed), <b>revised or codified</b> (a whole body of law rewritten into one statute), or <b>repealed</b> (ended). Courts do not presume that the legislature changed or ended a law silently, so amendments and repeals by implication are disfavored. And when a law is repealed, what was validly done under it is generally not undone.`,
 	overview: `<p><b>Part A (§§10.01–10.10)</b>: how amendments are made, how an amended statute is read, and their effect. <b>Part B (§§10.11–10.15)</b>: revision and codification, and the rule that omitted provisions are deemed repealed, but only when the new code is meant to replace the whole subject (<i>Mecano v. COA</i>). <b>Part C (§§10.16–10.29)</b>: express and implied repeal, the two kinds of implied repeal and their requisites, and the presumption against them. <b>Part D (§§10.30–10.41)</b>: the effects of repeal on jurisdiction, actions, vested rights, contracts, taxes and penal liability, and what happens when a repealing law is itself repealed or annulled.</p>
@@ -133,7 +133,7 @@ export const ch10: Chapter = {
 			when: 'A new code or revised law omits a provision of the old law.',
 			limits: '<b>Only if the revision was clearly intended to cover the whole subject and substitute for the old law.</b> In <i>Mecano</i>, the 1987 Administrative Code covered only administration, organization and procedure, not everything in the 1917 Code, so its omission of Sec. 699 (reimbursement of medical expenses) was not a repeal.',
 			differs: 'Implied repeal by substitution (Ch. X, Part C) uses the same "whole subject" test.',
-			example: 'Sec. 18 of the old Rule 41 was not reproduced in the 1997 Rules and was held repealed, because the 1997 Rules revised the same subject (per your earlier guide).'
+			example: 'Sec. 18 of the old Rule 41 was not reproduced in the 1997 Rules and was held repealed, because the 1997 Rules revised the same subject.'
 		},
 		{
 			name: 'Repeal: express or implied; a general repealing clause is not express; disuse never repeals',
@@ -158,7 +158,7 @@ export const ch10: Chapter = {
 		{
 			name: 'Other instances of implied repeal',
 			rule: 'Besides irreconcilable conflict and substitution, implied repeal also results where the later act nullifies the reason or purpose of the earlier act; where the later law is in negative terms (prohibiting a thing, or requiring it be done in a certain manner and not otherwise); where the express repeal of a provision from which an official derives authority implies repeal of the provision he enforces; and where a revision, codification or reenactment covers the whole subject.',
-			basis: 'Agpalo §§10.19–10.22, as summarized in your earlier guide.',
+			basis: 'Agpalo §§10.19–10.22.',
 			why: 'In each case the earlier law has lost its function or been displaced.',
 			when: 'A later law, without contradicting the earlier one word for word, removes its reason or its machinery.',
 			limits: 'Still subject to the presumption against implied repeal; the effect must be clear.',
@@ -294,7 +294,7 @@ export const ch10: Chapter = {
 		{
 			id: 'E10.6',
 			name: 'Other instances where implied repeal results',
-			source: 'Agpalo §§10.19–10.22, as summarized in your earlier guide.',
+			source: 'Agpalo §§10.19–10.22.',
 			kind: 'book',
 			lead: 'Implied repeal also results where',
 			items: [
@@ -356,9 +356,9 @@ export const ch10: Chapter = {
 				{ t: 'If an implied repealing law is itself repealed, the first law is revived unless otherwise provided', d: 'The first law was displaced only by the conflict, which no longer exists.', s: 'repeal of an implied repealing law revives the first law unless otherwise provided' }
 			],
 			memory: '<b>Void → never repealed · Express → stays dead · Implied → comes back.</b>',
-			tip: 'Your earlier guide gave only a general "no automatic revival" rule. The express/implied distinction is the standard formulation; confirm it in §§10.40–10.41.',
+			tip: 'The express/implied distinction is the standard formulation; confirm it in §§10.40–10.41.',
 			question: 'What is the effect on the original law when the law that repealed it is (a) declared unconstitutional, or (b) itself repealed?',
-			verify: 'The express/implied distinction is stated in Philippine commentaries (citing the Revised Administrative Code and <i>U.S. v. Soliman</i>); I could not check the official text here. Verify in your book before reciting.'
+			verify: 'The express/implied distinction is stated in Philippine commentaries (citing the Revised Administrative Code and <i>U.S. v. Soliman</i>); not checked against the official text.'
 		}
 	],
 
@@ -527,13 +527,9 @@ export const ch10: Chapter = {
 		{ kind: 'case', name: 'Mecano v. Commission on Audit', cite: '216 SCRA 500 (1992)', text: 'Sec. 699 of the Revised Administrative Code of 1917 (reimbursement of medical expenses of officials injured or sickened in the performance of duty) was not repealed by the 1987 Administrative Code. Its repealing clause is not an express repeal, there is no irreconcilable conflict, and the new Code does not cover the whole subject of the old one; its whereas clause limits it to administration, organization and procedure. Claim granted.' },
 		{ kind: 'case', name: 'Magtajas v. Pryce Properties', cite: 'G.R. No. 111097, July 20, 1994', text: 'The LGC did not repeal P.D. 1869: it is not among the laws specifically repealed in Sec. 534(a)–(e); implied repeals are not presumed; later laws (R.A. 7309, R.A. 7648) tap PAGCOR revenues; and the two laws can be harmonized.' },
 		{ kind: 'case', name: 'Corona v. Court of Appeals', cite: 'G.R. No. 97356, Sept. 30, 1992', text: 'A later special law repugnant to a prior general law on the same subject partially repeals it to the extent of the inconsistency, or is grafted as an exception onto it.' },
-		{ kind: 'case', name: 'Ty v. Trampe', cite: '250 SCRA 500 (1995)', text: 'The LGC did not impliedly repeal P.D. 921 on real estate tax; the two laws must be absolutely incompatible, clearly shown, before implied repeal is inferred.', verify: 'Facts not summarized in your materials; read the full case before reciting them.' },
-		{ kind: 'case', name: 'Hagad v. Gozo-Dadole', cite: '251 SCRA 242 (1995)', text: 'The LGC did not repeal the Ombudsman Act\'s disciplinary provisions over elective local officials; both are given concurrent effect.', verify: 'Holding as commonly summarized; your earlier guide marked it unconfirmed.' },
+		{ kind: 'case', name: 'Ty v. Trampe', cite: '250 SCRA 500 (1995)', text: 'The LGC did not impliedly repeal P.D. 921 on real estate tax; the two laws must be absolutely incompatible, clearly shown, before implied repeal is inferred.', verify: 'Facts not summarized here.' },
+		{ kind: 'case', name: 'Hagad v. Gozo-Dadole', cite: '251 SCRA 242 (1995)', text: 'The LGC did not repeal the Ombudsman Act\'s disciplinary provisions over elective local officials; both are given concurrent effect.', verify: 'Holding as commonly summarized; not confirmed against the full decision.' },
 		{ kind: 'case', name: 'R.A. 7636 (1992) repealing R.A. 1700', text: 'Total repeal of the Anti-Subversion Act; persons charged under R.A. 1700 were entitled to dismissal.' }
-	],
-	corrections: [
-		{ old: '§10.41: "If a repealing law is itself repealed, the general rule is that the first law is not automatically revived unless expressly provided."', fix: 'Add the standard distinction: that rule applies where the first law was <i>expressly</i> repealed. Where it was only <i>impliedly</i> repealed, the repeal of the repealing law generally revives it unless otherwise provided. Verify the exact wording in §§10.40–10.41.' },
-		{ old: 'Hagad v. Gozo-Dadole and Ty v. Trampe marked as unconfirmed or "read the full case."', fix: 'Kept, with the same caution. Cite them for the doctrine only.' }
 	],
 
 	caseNote: '<i>Magtajas</i> is the Chapter X case on general repealing clauses and implied repeal. <i>Corona</i> shows a partial implied repeal by a later special law that leaves the general law working outside the special field. The other three cases do not turn on repeal.',

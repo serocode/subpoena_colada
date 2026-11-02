@@ -1,5 +1,5 @@
 /*
- * Prescription module — the special module the exam brief asks for under Part IV: how long, when it starts,
+ * Prescription module — a special module: how long, when it starts,
  * what suspends it, what interrupts it, the Forestry Code / DENR case study with one-fact variations, and
  * computation drills. It sits right after Rule 110 because Rule 110, Sec. 1 is where institution and
  * interruption meet.
@@ -86,7 +86,7 @@ export const prescriptionCases: CaseStudy[] = [
 		rule: 'Act 3326, Sec. 2; Rule 110, Sec. 5 (prosecution under special laws is governed by those laws).',
 		hypo: 'The closest analogy for the DENR case: an agency investigation that the special law itself provides for.',
 		examQ: 'Does an investigation by an administrative agency interrupt prescription of an offense under a special law?',
-		verify: 'Facts are summarized at a high level; Tiu reproduces the doctrine. Read the decision before reciting specific dates.'
+		verify: 'Facts are summarized at a high level; Tiu reproduces the doctrine.'
 	},
 	{
 		id: 'pangilinan',
@@ -582,7 +582,7 @@ export function renderPrescription() {
 	out.push(
 		box(
 			'purple',
-			'Answers your professor may accept',
+			'Defensible answers',
 			ul([
 				'<b>Yes (best supported):</b> Sec. 80 makes the DENR investigation the statutory gateway to prosecution; Interport treats an agency investigation as equivalent to preliminary investigation; Panaguiton and Consebido refuse to make the State bear delays it does not control.',
 				'<b>No (strict view):</b> Rule 110, Sec. 1 speaks of the "proper officer for … preliminary investigation"; a DENR legal officer is not one; Merida shows the DENR route is optional, unlike the SEC\'s mandatory jurisdiction in Interport.',

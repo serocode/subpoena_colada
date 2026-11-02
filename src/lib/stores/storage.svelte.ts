@@ -1,6 +1,6 @@
 import type { HighlightColor, UserEssayDraft, UserHighlight, UserMcqAttempt } from '$lib/types';
 import { COLOR_NAMES, DEFAULT_HIGHLIGHT_LABELS, HIGHLIGHT_COLORS } from '$lib/highlights.svelte';
-import { canonicalModuleId } from '$lib/data/aliases';
+import { canonicalModuleId, canonicalPartId, canonicalScope, canonicalUnitKey } from '$lib/data/aliases';
 
 const KEYS = {
 	mcq: 'law_mcq_attempts',
@@ -57,21 +57,37 @@ const emptyReading = (): ReadingData => ({ v: 1, lastBySubject: {}, recent: [], 
 const isLocation = (v: unknown): v is ReadingLocation =>
 	isRecord(v) && typeof v.subjectId === 'string' && typeof v.partId === 'string' && typeof v.title === 'string' && typeof v.at === 'number';
 
+/** A saved place with any renamed guide part (see PART_ALIASES) moved to its current id. */
+function migrateLocation<T extends Omit<ReadingLocation, 'at'>>(loc: T): T {
+	const partId = canonicalPartId(loc.subjectId, loc.partId);
+	if (partId === loc.partId) return loc;
+	return { ...loc, partId, anchor: loc.anchor === loc.partId ? partId : loc.anchor };
+}
+
 /** Keeps whatever parts of a stored reading blob are well formed. */
 function cleanReading(v: unknown): ReadingData {
 	const out = emptyReading();
 	if (!isRecord(v)) return out;
-	if (isLocation(v.last)) out.last = v.last;
-	if (isRecord(v.lastBySubject)) out.lastBySubject = Object.fromEntries(Object.entries(v.lastBySubject).filter((e): e is [string, ReadingLocation] => isLocation(e[1])));
-	if (Array.isArray(v.recent)) out.recent = v.recent.filter(isLocation).slice(0, 20);
-	const stamps = (x: unknown) => (isRecord(x) ? Object.fromEntries(Object.entries(x).filter((e): e is [string, number] => typeof e[1] === 'number')) : {});
+	if (isLocation(v.last)) out.last = migrateLocation(v.last);
+	if (isRecord(v.lastBySubject))
+		out.lastBySubject = Object.fromEntries(
+			Object.entries(v.lastBySubject)
+				.filter((e): e is [string, ReadingLocation] => isLocation(e[1]))
+				.map(([k, loc]) => [k, migrateLocation(loc)])
+		);
+	if (Array.isArray(v.recent)) out.recent = v.recent.filter(isLocation).map(migrateLocation).slice(0, 20);
+	const stamps = (x: unknown) =>
+		isRecord(x) ? Object.fromEntries(Object.entries(x).filter((e): e is [string, number] => typeof e[1] === 'number').map(([k, t]) => [canonicalUnitKey(k), t])) : {};
 	out.visited = stamps(v.visited);
 	out.studied = stamps(v.studied);
-	if (Array.isArray(v.bookmarks)) out.bookmarks = v.bookmarks.filter((b): b is GuideBookmark => isLocation(b) && typeof (b as GuideBookmark).id === 'string');
+	if (Array.isArray(v.bookmarks))
+		out.bookmarks = v.bookmarks.filter((b): b is GuideBookmark => isLocation(b) && typeof (b as GuideBookmark).id === 'string').map(migrateLocation);
 	if (Array.isArray(v.notes))
-		out.notes = v.notes.filter(
-			(n): n is UserNote => isRecord(n) && typeof n.id === 'string' && typeof n.title === 'string' && typeof n.body === 'string' && typeof n.createdAt === 'number' && typeof n.updatedAt === 'number'
-		);
+		out.notes = v.notes
+			.filter(
+				(n): n is UserNote => isRecord(n) && typeof n.id === 'string' && typeof n.title === 'string' && typeof n.body === 'string' && typeof n.createdAt === 'number' && typeof n.updatedAt === 'number'
+			)
+			.map((n) => (isRecord(n.link) && typeof n.link.subjectId === 'string' && typeof n.link.partId === 'string' ? { ...n, link: migrateLocation(n.link) } : n));
 	if (Array.isArray(v.recentSearches)) out.recentSearches = v.recentSearches.filter((r): r is { q: string; at: number } => isRecord(r) && typeof r.q === 'string' && typeof r.at === 'number').slice(0, 10);
 	return out;
 }
@@ -100,14 +116,19 @@ function isHighlight(v: unknown): v is UserHighlight {
 
 /**
  * Drops malformed entries one by one, so a single bad highlight doesn't cost the reader all the others. Highlights made
- * in a subject that has since been merged into another (`statcon2`, `pfr_cases`) move to that subject; their ids,
- * scopes and anchors are unchanged, so they land on the same text.
+ * in a subject that has since been merged into another (`statcon2`, `pfr_cases`) move to that subject, and highlights
+ * in a guide part that was renamed (PART_ALIASES) move to its new id; the text they quote is unchanged, so they land on
+ * the same words.
  */
 function cleanHighlights(v: Record<string, unknown>): Record<string, UserHighlight> {
 	return Object.fromEntries(
 		Object.entries(v)
 			.filter((e): e is [string, UserHighlight] => isHighlight(e[1]))
-			.map(([k, h]) => [k, h.moduleId === canonicalModuleId(h.moduleId) ? h : { ...h, moduleId: canonicalModuleId(h.moduleId) }])
+			.map(([k, h]) => {
+				const moduleId = canonicalModuleId(h.moduleId);
+				const scope = canonicalScope(moduleId, h.scope);
+				return [k, moduleId === h.moduleId && scope === h.scope ? h : { ...h, moduleId, scope }];
+			})
 	);
 }
 

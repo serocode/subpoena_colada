@@ -514,7 +514,7 @@ export const cases: CaseStudy[] = [
 			'Separate opinions (not the ruling of the Court)',
 			ul([
 				'<b>Padilla, J. (concurring):</b> agreed that ordinances cannot modify or repeal P.D. 1869, but reiterated that gambling erodes moral character ("what is legal is not always moral") and urged the national government to re-examine imposing a casino on an unwilling city.',
-				'<b>Davide, Jr., J. (concurring in part):</b> Pryce\'s action was really for declaratory relief, outside the CA\'s jurisdiction; agreed the ordinances cannot repeal P.D. 1869; but the CA should not have declared them <i>unconstitutional</i>, since they could be reconciled with P.D. 1869 by construing them as not applying to PAGCOR. Recitation tip: this is itself a harmonization move, but it is not the ruling.'
+				'<b>Davide, Jr., J. (concurring in part):</b> Pryce\'s action was really for declaratory relief, outside the CA\'s jurisdiction; agreed the ordinances cannot repeal P.D. 1869; but the CA should not have declared them <i>unconstitutional</i>, since they could be reconciled with P.D. 1869 by construing them as not applying to PAGCOR. This is itself a harmonization move, but it is not the ruling.'
 			])
 		),
 		ratio: {
@@ -684,7 +684,6 @@ function renderCase(c: CaseStudy, k: number) {
 	])}</div>`);
 
 	out.push(h4('F. Recitation practice'));
-	out.push(`<p class="sg-intro">Say your answer aloud first, then open the suggested answer.</p>`);
 	out.push(
 		ol(
 			c.recitation.map(([q, a]) => `<p class="rv-question">${q}</p><details class="rv-reveal"><summary>Suggested answer</summary><div>${p(a)}</div></details>`),
@@ -693,7 +692,7 @@ function renderCase(c: CaseStudy, k: number) {
 	);
 
 	out.push(h4('G. Case-based examination practice'));
-	out.push(`<p class="sg-intro">Three recall questions, two discussion questions, one comparison and one ALAC hypothetical (also in the ALAC Essay Exercises tab).</p>`);
+	out.push(`<p class="sg-intro">Three recall questions, two discussion questions, one comparison and one ALAC hypothetical.</p>`);
 	out.push(...c.exam.map((x, i) => renderQuestionWithReveal(`K${k}.${i + 1}`, x)));
 	return out.join('\n');
 }
@@ -702,7 +701,7 @@ export function renderCases() {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="five-cases">Five-Case Mastery</h2>`);
 	out.push(
-		`<p class="sg-intro">The five assigned cases, each in the same order: identification, timeline, digest (facts, issues, ruling), doctrine and ratio, a beginner-friendly explanation, your index card, recitation practice, and exam practice. Then the comparison matrix and a recall drill. Facts are digested from the full decisions as summarized in your case-digest PDF.</p>`
+		`<p class="sg-intro">The five assigned cases, each in the same order: identification, timeline, digest (facts, issues, ruling), doctrine and ratio, a beginner-friendly explanation, an index card, recitation practice, and exam practice. Then the comparison matrix and a recall drill.</p>`
 	);
 	out.push(...cases.map((c, i) => renderCase(c, i + 1)));
 
@@ -753,7 +752,6 @@ export function renderCases() {
 	);
 
 	out.push(h3('five-case-drill', 'Case recall drill'));
-	out.push(`<p class="sg-intro">Name the case from the clue, then check. These clues are also in the MCQ Practice Engine under "Five Cases."</p>`);
 	out.push(
 		ol(
 			recallDrill.map(([clue, id]) => `${clue}<details class="rv-reveal"><summary>Answer</summary><div><p>${CASE_NAMES[id]}</p></div></details>`),

@@ -105,7 +105,7 @@ export const r117: RuleChapter = {
 			plain: `A dismissal "for now," with the accused's express consent and notice to the victim. If the State does not revive it within 1 year (≤6 years' imprisonment) or 2 years (>6 years), it becomes permanent.`,
 			reqs: `(People v. Lacson, 2003): (1) the prosecution with the accused\'s express conformity, or the accused, or both, move for provisional dismissal; (2) the offended party is notified; (3) the court orders a provisional dismissal; (4) the public prosecutor is served a copy of the order.`,
 			who: `Prosecution; accused (express consent — "no objection" or "with my conformity" written on the motion; mere silence is not express consent); offended party (notice); court.`,
-			when: `Any time, even during trial (Tiu, citing Prof. Salvador). Time-bar: 1 or 2 years from issuance of the order (A.M. No. 12-11-2-SC, Sec. 14; 2017 Guidelines, III.7).`,
+			when: `Any time, even during trial (Tiu). Time-bar: 1 or 2 years from issuance of the order (A.M. No. 12-11-2-SC, Sec. 14; 2017 Guidelines, III.7).`,
 			exceptions: `If dismissed without the accused\'s express consent, Sec. 8 does not apply; revival is subject to double jeopardy and prescription (Lacson). Grounds listed in Sec. 3 call for a motion to quash, not a provisional dismissal (Los Baños v. Pedro, 2009). A motion to withdraw the information is different (Torres v. Aguinaldo, 2005).`,
 			effect: `Before the time-bar, the case may be revived by refiling the information or filing a new one for the same or an included offense; no new preliminary investigation is needed unless there are new witnesses, new accused, an upgraded charge, or an upgraded participation (Lacson). After the time-bar, the dismissal is automatically permanent; A.M. No. 12-11-2-SC says it "shall amount to an adjudication of the case on the merits."`,
 			cases: `${caseLink('lacson', 'People v. Lacson (2003)')}; ${caseLink('los-banos', 'Los Baños v. Pedro (2009)')}; <i>Torres v. Aguinaldo</i> (2005); <i>Saldariega v. Panganiban</i> (2015).`,
@@ -121,7 +121,7 @@ export const r117: RuleChapter = {
 			effect: `Waived: lack of jurisdiction over the person (c), lack of authority (d — Villa Gomez), defective form (e), duplicity (f), legal excuse on the face (h). Not waived: (a), (b), (g), (i).`,
 			hypo: `After conviction, the accused argues on appeal that the information charged two offenses. Waived; the court may convict of both if proved (Rule 120, Sec. 3).`,
 			trap: `Tiu reproduces Sec. 9 in a version that reads "shall be deemed a waiver of any objections based on the grounds…(a), (b), (g), and (i)," but his own discussion — and the settled rule — treats (a), (b), (g) and (i) as the exceptions that are <b>not</b> waived. Recite it as the exceptions.`,
-			verify: `Check the exact wording in your codal; the extraction of Tiu\'s notes shows the "except those" phrase missing.`
+			verify: `Tiu\'s notes omit the "except those" phrase; check the exact wording of the codal.`
 		}
 	],
 	reqs: [
