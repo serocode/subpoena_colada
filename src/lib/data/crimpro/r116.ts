@@ -52,7 +52,7 @@ export const r116: RuleChapter = {
 			who: `Accused; prosecutor; offended party; court.`,
 			when: `At arraignment, or after arraignment but before trial (in practice, at pre-trial — Rule 118, Sec. 1[a]).`,
 			exceptions: `Drug cases: governed by the Supreme Court's plea bargaining framework (A.M. No. 18-03-16-SC, as revised); after Montierro (2022), courts may overrule a prosecution objection based solely on DOJ guidelines inconsistent with the framework, but shall not allow plea bargaining if the objection is valid and supported by evidence (e.g., evidence of guilt is strong, or the accused is a recidivist or habitual offender).`,
-			effect: `Conviction for the lesser offense; no amendment of the information needed. A plea to a lesser offense is not the mitigating circumstance of voluntary plea of guilt (which requires a plea to the offense charged — Tiu, citing Prof. Salvador).`,
+			effect: `Conviction for the lesser offense; no amendment of the information needed. A plea to a lesser offense is not the mitigating circumstance of voluntary plea of guilt (which requires a plea to the offense charged — Tiu).`,
 			cases: `${caseLink('estipona', 'Estipona v. Lobrigo (2017)')}; ${caseLink('montierro', 'People v. Montierro (2022)')}; <i>Daan v. Sandiganbayan</i> (definition; addressed to the court\'s discretion — in Tiu).`,
 			hypo: `Charged with homicide, Y offers at pre-trial to plead guilty to reckless imprudence resulting in homicide. Reckless imprudence is not "necessarily included" in intentional homicide in the technical sense — check whether the lesser offense's elements are included in those alleged. If they are not, the plea cannot be accepted without amending the information.`,
 			trap: `The offended party's consent is required in all cases at arraignment — not just in private crimes — unless he fails to appear despite notice.`,
@@ -69,7 +69,7 @@ export const r116: RuleChapter = {
 			effect: `Failure to conduct a searching inquiry renders the plea improvident and inefficacious (People v. Gumimba, in Tiu). A conviction resting solely on an improvident plea is set aside and the case remanded; one supported by independent evidence stands (People v. Documento, 2010; People v. Gambao, 2013).`,
 			cases: `${caseLink('pastor', 'People v. Pastor (2002)')} (guidelines for the searching inquiry); ${caseLink('documento', 'People v. Documento (2010)')}; <i>People v. Francisco</i> (2010 — evidence to determine participation and modifying circumstances; the accused may waive presenting evidence).`,
 			hypo: `The accused pleads guilty to qualified rape. The judge asks only, "Do you understand your plea?" and convicts without evidence. The plea is improvident; the conviction rests solely on it, so the case is remanded.`,
-			trap: `Since RA 9346 (2006) bars the death penalty, courts still apply Sec. 3's safeguards to offenses that were "capital" — in practice, to grave offenses punishable by reclusion perpetua; check how your professor treats this.`,
+			trap: `Since RA 9346 (2006) bars the death penalty, courts still apply Sec. 3's safeguards to offenses that were "capital" — in practice, to grave offenses punishable by reclusion perpetua.`,
 			update: `RA 9346 prohibits the imposition of the death penalty; Tiu notes the substitution of reclusion perpetua or life imprisonment (RA 9346, Sec. 2).`,
 			verify: `Whether Sec. 3 still applies to offenses formerly capital (now punishable by reclusion perpetua under RA 9346) is not discussed in Tiu; check post-2006 decisions.`
 		},
@@ -441,7 +441,7 @@ export const r116: RuleChapter = {
 			hypo: 'The prosecutor objects to a plea bargain solely because a DOJ circular disallows it for that offense. The court may overrule the objection if the plea complies with the Court\'s framework and evidence of guilt is not strong.',
 			examQ: 'Is the consent of the prosecution indispensable to plea bargaining in drug cases?',
 			also: ['r118'],
-			verify: 'Holding from excerpts and summaries; read the decision and the revised framework before reciting details.'
+			verify: 'Holding from excerpts and summaries.'
 		},
 		{
 			id: 'pastor',

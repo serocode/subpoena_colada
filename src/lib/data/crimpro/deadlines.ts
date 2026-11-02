@@ -40,7 +40,7 @@ export function renderDeadlines(rules: RuleChapter[]) {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="deadlines">Deadlines Matrix — Rules 110–127</h2>`);
 	out.push(
-		`<p class="sg-intro">Every period in Rules 110–127 and the issuances that supplement them, grouped by Rule. Columns follow your brief: Rule/Section, act, responsible person, period, starting point, exceptions, consequence. The colored tag on each row says what kind of period it is.</p>`
+		`<p class="sg-intro">Every period in Rules 110–127 and the issuances that supplement them, grouped by Rule. The colored tag on each row says what kind of period it is.</p>`
 	);
 
 	out.push(h3('deadlines-kinds', 'Four kinds of periods — do not mix them'));
@@ -78,7 +78,7 @@ export function renderDeadlines(rules: RuleChapter[]) {
 	out.push(deadlineTable(prescriptionDeadlines as Deadline[]));
 
 	out.push(h3('deadlines-drills', 'Date-calculation drills'));
-	out.push(`<p class="sg-intro">Work each one on paper, then open it. Calendar years are used only to make the dates concrete.</p>`);
+	out.push(`<p class="sg-intro">Calendar years are used only to make the dates concrete.</p>`);
 	out.push(flashcards(drills));
 	out.push(box('orange', 'Common computation mistakes', ul([
 		'Counting the first day.',

@@ -55,7 +55,7 @@ export const crimpro: LawModule = {
 		{ id: 'mock', name: 'Integrated mock exam', eyebrow: 'RULES 110–120', desc: 'Mixed-Rule questions; identify the Rule yourself' }
 	],
 	studyGuideIntro:
-		'Start here, then the topic map; one chapter per Rule (prescription module after Rule 110); then the deadlines matrix, case review, consolidated comparisons, the mock exam with its separate answer key, the four practice quizzes with their key, and the last-minute sheet.',
+		'Exam method and updates since Tiu, the topic map, one chapter per Rule (prescription module after Rule 110), the deadlines matrix, case review, consolidated comparisons, the mock exam with its separate answer key, the four practice quizzes with their key, and the last-minute sheet.',
 	legend: [
 		{ color: 'yellow', label: 'Memorize — rules, plain English & memory aids' },
 		{ color: 'green', label: 'Requisites, model answers & waivable defects' },

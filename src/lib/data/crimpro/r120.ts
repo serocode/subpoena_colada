@@ -33,7 +33,7 @@ export const r120: RuleChapter = {
 			text: `"Judgment is the adjudication by the court that the accused is guilty or not guilty of the offense charged and the imposition on him of the proper penalty and civil liability, if any. It must be written in the official language, personally and directly prepared by the judge and signed by him and shall contain clearly and distinctly a statement of the facts and the law upon which it is based."`,
 			plain: `The judge writes and signs a decision, in the official language, explaining the facts and the law.`,
 			reqs: `(1) Official language; (2) personally and directly prepared by the judge; (3) signed by him; (4) clear statement of facts and law.`,
-			who: `The judge (he may have researchers, but must pen the decision — Tiu, citing Prof. Salvador).`,
+			who: `The judge (he may have researchers, but must pen the decision — Tiu).`,
 			when: `Within three months from submission for lower courts (Const., Art. VIII, Sec. 15); 2017 Guidelines: promulgation within 90 days from submission (15 days for drug cases).`,
 			effect: `A decision that fails to state facts and law leaves the parties unable to identify errors and violates due process (Lumanog v. People, in Tiu). A judge who did not hear the witnesses may still validly decide on the record (People v. Alfredo, in Tiu).`,
 			cases: `${caseLink('lumanog', 'Lumanog v. People')}; <i>Merencillo v. People</i> (2007 — judgment vs. interlocutory order).`,

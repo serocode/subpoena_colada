@@ -95,7 +95,7 @@ export const r115: RuleChapter = {
 			plain: `Witnesses against him must testify in his presence and be open to cross-examination. Testimony from an earlier case may be used only if the witness is now unavailable, the parties and subject matter are the same, and there was an opportunity to cross-examine.`,
 			reqs: `Former testimony: (1) witness deceased, abroad or not found, unavailable or unable; (2) same parties and subject matter; (3) adverse party had the opportunity to cross-examine (Tiu, p. 141).`,
 			effect: `Testimony not subjected to cross-examination through no fault of the accused may be stricken. Opportunity to cross-examine, not actual cross-examination, is enough.`,
-			cases: `Rule 130, Sec. 47 (testimony or deposition at a former proceeding), reproduced in Tiu; Prof. Salvador's view (Tiu) that depositions in another proceeding cannot be used in a criminal case because Rule 115(f) does not mention depositions.`,
+			cases: `Rule 130, Sec. 47 (testimony or deposition at a former proceeding), reproduced in Tiu; the view reported in Tiu that depositions in another proceeding cannot be used in a criminal case because Rule 115(f) does not mention depositions.`,
 			hypo: `The victim testified on direct in the criminal case but died before cross-examination. Her direct testimony may be stricken unless the delay in cross-examination was due to the defense.`,
 			trap: `"Opportunity" is the test: a party who could have cross-examined but did not cannot complain.`,
 			update: `The Revised Rules on Evidence (A.M. No. 19-08-15-SC, effective May 1, 2020) renumbered several provisions; check the current section number of the former-testimony rule before citing "Rule 130, Sec. 47."`,
@@ -288,7 +288,7 @@ export const r115: RuleChapter = {
 				{ t: 'Detained accused (A.M. No. 12-11-2-SC): raffle 3 days; arraignment 10 days from raffle; pre-trial 10 days from arraignment; trial set within 30 days from pre-trial; trial 180 days (60 days by judicial affidavit)', d: 'A faster timetable for those who cannot post bail. Read it with the 2017 Revised Guidelines for Continuous Trial, which set their own periods (see Rule 119).', s: 'detained accused — 3/10/10/30/180' }
 			],
 			exceptions: 'Excluded delays under Rule 119, Sec. 3. Tiu also lists 80 days from arraignment to trial — the last of the transitional limits in Rule 119, Sec. 6.',
-			verify: 'Rule 119, Sec. 6 set 180, 120 and 80 days for the three years after RA 8493 took effect; confirm with your professor whether the 80-day figure is tested as a current limit.',
+			verify: 'Rule 119, Sec. 6 set 180, 120 and 80 days for the three years after RA 8493 took effect; the 80-day figure was the third-year transitional limit.',
 			question: 'What are the time limits under the speedy-trial rules?'
 		}
 	],

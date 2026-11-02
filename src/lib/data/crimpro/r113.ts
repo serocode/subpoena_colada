@@ -230,7 +230,7 @@ export const r113: RuleChapter = {
 			],
 			exceptions: 'The bondsman may also arrest the accused (or have him arrested on written authority) to surrender him (Rule 114, Sec. 23).',
 			memory: '<b>F-H-E-B-R</b>: Flagrante · Hot pursuit · Escapee · Bail-jumper abroad · Retaking.',
-			tip: 'Sec. 5 lists three; Tiu adds the bail rule (four). The retaking rule (Sec. 13) is a fifth if your professor counts it. Say which list you are giving.',
+			tip: 'Sec. 5 lists three; Tiu adds the bail rule (four). Some lists count the retaking rule (Sec. 13) as a fifth. Say which list you are giving.',
 			question: 'When may a person be lawfully arrested without a warrant?'
 		},
 		{

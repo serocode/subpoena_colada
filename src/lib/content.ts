@@ -1,5 +1,6 @@
 import type { CaseDigest, LegendItem, Subject } from '$lib/types';
 import { modules } from '$lib/data/modules';
+import { canonicalPartId } from '$lib/data/aliases';
 
 /**
  * The reading structure of a subject, parsed once from the guides' first-party HTML:
@@ -205,8 +206,10 @@ export function getParts(subject: Subject): Part[] {
 	return parts;
 }
 
+/** Accepts renamed part ids (PART_ALIASES), so old links still resolve. */
 export function getPart(subject: Subject, partId: string) {
-	return getParts(subject).find((p) => p.id === partId);
+	const id = canonicalPartId(subject.id, partId);
+	return getParts(subject).find((p) => p.id === id);
 }
 
 /** The part that contains an element id: an old `/module/x#anchor` link, a search hit, a saved location. */

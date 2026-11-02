@@ -13,7 +13,7 @@ import { badge, box, dl, flashcards, h3, h4, ol, p, plain, table, ul, type Alac,
 export { badge, box, dl, flashcards, h3, h4, ol, p, plain, table, ul };
 export type { Alac, Color, Level };
 
-/** Question categories exactly as in the exam brief. */
+/** Question categories. */
 export type Cat = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 export const CATS: Record<Cat, string> = {
 	A: 'Enumeration and brief discussion',
@@ -31,7 +31,7 @@ export const LEVELS: Record<Level, string> = { 1: 'Recall', 2: 'Explanation', 3:
  * Content types
  * ------------------------------------------------------------------ */
 
-/** One section of the Rule, discussed in the ten parts the brief asks for. */
+/** One section of the Rule, discussed in ten parts. */
 export interface Section {
 	/** Section number as printed, e.g. "1", "5", "13". */
 	n: string;
@@ -116,7 +116,7 @@ export interface Enumeration {
 }
 
 type Pair = [string, string];
-/** Comparison table with the nine rows the brief specifies, then the decisive distinction and a hypothetical. */
+/** Comparison table with nine rows, then the decisive distinction and a hypothetical. */
 export interface Comparison {
 	id: string;
 	title: string;
@@ -141,7 +141,7 @@ export interface CaseStudy {
 	id: string;
 	name: string;
 	cite: string;
-	/** Where the digest comes from: Tiu's notes, or a decision text / summary checked for this reviewer. */
+	/** Where the digest comes from: Tiu's notes, or a decision text / summary it was checked against. */
 	from: 'Tiu' | 'Checked' | 'Tiu + checked';
 	facts: string;
 	issue: string;
@@ -355,7 +355,7 @@ ${box('purple', 'How the difference changes the result', p(c.hypo))}
 export function renderCase(c: CaseStudy) {
 	return `<div class="rv-card rv-caselink" id="case-${c.id}">
 <p class="rv-card-title">${c.name}</p>
-<p class="rv-meta"><span class="rv-cite">${c.cite}</span>${badge(c.from === 'Tiu' ? "From Tiu's notes" : c.from === 'Checked' ? 'Checked for this reviewer' : "Tiu's notes + checked", c.from === 'Tiu' ? 'neutral' : 'blue')}</p>
+<p class="rv-meta"><span class="rv-cite">${c.cite}</span>${badge(c.from === 'Tiu' ? "From Tiu's notes" : c.from === 'Checked' ? 'Checked' : "Tiu's notes + checked", c.from === 'Tiu' ? 'neutral' : 'blue')}</p>
 ${verifyNote(c.verify)}
 ${dl([
 	['Facts', c.facts],
@@ -461,39 +461,6 @@ export function renderAnswerKey(prefix: string, items: Practice[], showRules = f
 }
 
 /** Three timed sets drawn from the bank, by item number. */
-function timedSets(prefix: string, items: Practice[]) {
-	const numbered = numberPractice(prefix, items);
-	const pick = (cats: Cat[], n: number) => numbered.filter((x) => cats.includes(x.x.cat)).slice(0, n);
-	const fmt = (xs: { num: string }[]) => xs.map((x) => `<a href="#${qid(x.num)}">${x.num}</a>`).join(', ');
-	const sets: [string, string, { num: string }[]][] = [
-		['Sprint — 10 minutes', 'True or false with a one-sentence justification each. No notes.', pick(['C'], 6)],
-		['Lists and contrasts — 20 minutes', 'Write each list in full with a sentence per item, then the comparisons in table form.', [...pick(['A'], 2), ...pick(['B'], 1)]],
-		['Situational — 30 minutes', 'Answer in ALAC. State the issue, the rule with its source, apply every material fact, and conclude directly.', pick(['D', 'E', 'G'], 3)]
-	];
-	return table(
-		['Set', 'Instructions', 'Items'],
-		sets.filter(([, , xs]) => xs.length).map(([n, i, xs]) => [`<b>${n}</b>`, i, fmt(xs)])
-	);
-}
-
-const ERROR_LOG = table(
-	['Question I answered incorrectly', 'Rule I misunderstood', 'Fact I overlooked', 'Correct doctrine', 'Why my answer was wrong', 'Lesson for similar questions', 'Re-test on'],
-	[
-		[
-			'<i>e.g., 110.x — information signed by an assistant prosecutor without written approval</i>',
-			'<i>Rule 117, Secs. 3(d) and 9</i>',
-			'<i>The accused had already been arraigned without objecting</i>',
-			'<i>Lack of authority is waivable, not jurisdictional (Villa Gomez, 2020)</i>',
-			'<i>I treated a waivable defect as jurisdictional</i>',
-			'<i>Before calling a defect fatal, ask whether it survives the plea</i>',
-			''
-		],
-		['', '', '', '', '', '', ''],
-		['', '', '', '', '', '', ''],
-		['', '', '', '', '', '', '']
-	]
-);
-
 /* ------------------------------------------------------------------ *
  * Rule chapter renderer
  * ------------------------------------------------------------------ */
@@ -505,7 +472,7 @@ export function renderRule(r: RuleChapter) {
 
 	out.push(`<h2 class="sg-h2" id="${r.id}">Rule ${r.n} — ${r.title}</h2>`);
 	out.push(
-		`<p class="sg-intro">Tiu's notes, ${r.tiu}. Rule ${r.n} only. Learn it (parts 1–8), test yourself (9–10), then lock it in (11–12). Riano was not provided, so nothing here is attributed to Riano.</p>`
+		`<p class="sg-intro">Tiu's notes, ${r.tiu}.</p>`
 	);
 
 	// 1 · Overview
@@ -537,7 +504,7 @@ export function renderRule(r: RuleChapter) {
 	// 4 · Enumerations
 	out.push(h3(id('enumerations'), '4 · Enumerations with brief discussion'));
 	out.push(
-		`<p class="sg-intro">Every list your examiner can ask for in Rule ${r.n}. Each card says whether it is an express list in the Rules or a law, a list stated by the Court, or a teaching list. Never tell an examiner a teaching list is the Rule's own list.</p>`
+		`<p class="sg-intro">Every list in Rule ${r.n}. Each card says whether it is an express list in the Rules or a law, a list stated by the Court, or a teaching list.</p>`
 	);
 	out.push(...r.enums.map(renderEnumeration));
 
@@ -548,7 +515,7 @@ export function renderRule(r: RuleChapter) {
 	// 6 · Cases
 	out.push(h3(id('cases'), '6 · Case integration'));
 	out.push(
-		`<p class="sg-intro">Holding and doctrine are kept apart from what the parties argued. Cases marked "From Tiu's notes" are digested from the notes as provided; cases marked "checked" were read against the decision or a reliable summary for this reviewer.</p>`
+		`<p class="sg-intro">Holding and doctrine are kept apart from what the parties argued. Cases marked "From Tiu's notes" are digested from the notes; cases marked "Checked" were read against the decision or a reliable summary.</p>`
 	);
 	out.push(...(r.cases.length ? r.cases.map(renderCase) : [p(`No case is digested under Rule ${r.n} in Tiu's notes; the doctrines that apply are cited in the section cards and linked to their digests in other Rules.`)]));
 
@@ -577,7 +544,7 @@ export function renderRule(r: RuleChapter) {
 	// 9 · Problem bank
 	out.push(h3(id('practice'), '9 · Problem bank'));
 	out.push(
-		`<p class="sg-intro">Rule ${r.n} only. Categories A–G as in your exam brief; within each category, Level 1 (recall) to Level 5 (tricky). Write your answer first, then open the key in part 10. True-or-false items are also in the <b>MCQ Practice Engine</b>; situational problems are also in <b>ALAC Essay Exercises</b>.</p>`
+		`<p class="sg-intro">Categories A–G; within each category, Level 1 (recall) to Level 5 (tricky).</p>`
 	);
 	out.push(renderPracticeSets(P, r.practice));
 
@@ -593,12 +560,10 @@ export function renderRule(r: RuleChapter) {
 	out.push(h4('Must-memorize'), ul(r.memorize, 'rv-check'));
 	out.push(
 		h4('Must-memorize lists'),
-		table(['List', 'Items — reproduce without looking', 'Source'], r.enums.filter((e) => e.memorize).map((e) => [`<a href="#${slug(e.id)}"><b>${e.id}</b></a> ${e.name}`, ol(e.items.map((i) => i.t)), e.source]))
+		table(['List', 'Items', 'Source'], r.enums.filter((e) => e.memorize).map((e) => [`<a href="#${slug(e.id)}"><b>${e.id}</b></a> ${e.name}`, ol(e.items.map((i) => i.t)), e.source]))
 	);
-	out.push(h4('Flashcards'), `<p class="sg-intro">Say the answer aloud, then tap to check.</p>`, flashcards(r.flashcards));
-	out.push(h4('Oral recitation drill'), `<p class="sg-intro">Answer standing up, in two or three sentences, as if called in class. Then check.</p>`, flashcards(r.oral));
-	out.push(h4('Timed practice'), timedSets(P, r.practice));
-	out.push(h4('Error log'), `<p class="sg-intro">Copy this table into your notebook. Log every miss from parts 9–10; re-test each entry after two days.</p>`, ERROR_LOG);
+	out.push(h4('Flashcards'), flashcards(r.flashcards));
+	out.push(h4('Oral recitation drill'), flashcards(r.oral));
 
 	// 12 · Review sheet
 	out.push(h3(id('sheet'), '12 · Review sheet and mastery checklist'));

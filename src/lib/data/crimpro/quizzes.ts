@@ -970,7 +970,7 @@ export function renderQuizzes() {
 	const out: string[] = [];
 	out.push(`<h2 class="sg-h2" id="quizzes">Practice Quizzes — Rules 110–127</h2>`);
 	out.push(
-		`<p class="sg-intro">Four quizzes of situational multiple-choice questions (${quizzes.map((z) => z.items.length).join(', ')} items), by Rule range. Take each one in the <b>MCQ Practice Engine</b> (pick "Quiz 1" to "Quiz 4" in the topic filter; Exam mode times you and scores by Rule), or on paper here — the answer key is in the <a href="#quiz-answers">next section</a>.</p>`
+		`<p class="sg-intro">Four quizzes of situational multiple-choice questions (${quizzes.map((z) => z.items.length).join(', ')} items), by Rule range. The answer key is in the <a href="#quiz-answers">next section</a>.</p>`
 	);
 	out.push(
 		`<p class="rv-source">${quizzes.map((z) => `<a href="#quiz-${z.n}">${quizTitle(z)}</a>`).join(' · ')}</p>`

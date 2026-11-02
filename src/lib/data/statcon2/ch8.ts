@@ -6,7 +6,7 @@ export const ch8: Chapter = {
 	roman: 'VIII',
 	title: 'Mandatory and Directory Statutes',
 	short: 'Ch. VIII — Mandatory & Directory Statutes',
-	sections: '§§8.01–8.23 (section numbers as used in your earlier guide)',
+	sections: '§§8.01–8.23',
 
 	plain: `Some legal requirements must be followed exactly, or what was done is void: these are <b>mandatory</b>. Others are guidance: breaking them is an irregularity that may get an official disciplined, but the act still stands. These are <b>directory</b>. "Shall" and "may" are clues, not answers. The real test is what the legislature intended, judged mostly by the consequences of each reading.`,
 	overview: `<p><b>Part A (§§8.01–8.09)</b> defines the two kinds of statutes, gives the test (legislative intent, read through the consequences of each reading), and explains how much weight words like "shall," "may" and "shall not" carry. <b>Part B (§§8.10–8.19)</b> lists requirements the courts treat as mandatory. <b>Part C (§§8.20–8.23)</b> lists those treated as directory.</p>
@@ -200,7 +200,7 @@ export const ch8: Chapter = {
 		{
 			id: 'E8.1',
 			name: 'Questions under the consequences test',
-			source: 'Agpalo §§8.03–8.04, as summarized in your earlier guide.',
+			source: 'Agpalo §§8.03–8.04.',
 			kind: 'book',
 			memorize: true,
 			lead: 'To decide whether a provision is mandatory, ask whether',
@@ -214,7 +214,7 @@ export const ch8: Chapter = {
 			memory: '<b>R-T-A-S-P: Result · Third persons · Alternative · Substance · Public injury.</b> Mostly "yes" → mandatory.',
 			tip: 'Pair this list with the "effect test" (E8.2). Common mistake: answering with the word test alone ("it says shall, so it is mandatory").',
 			question: 'What questions should a court ask in determining whether a statutory provision is mandatory or directory?',
-			verify: 'This five-question list follows your earlier guide; confirm Agpalo\'s exact formulation before quoting it as his list.'
+			verify: 'Confirm Agpalo\'s exact formulation before quoting this five-question list as his.'
 		},
 		{
 			id: 'E8.2',
@@ -301,7 +301,7 @@ export const ch8: Chapter = {
 			memory: '<b>Essence · Negative words · Power ends.</b>',
 			tip: 'Lead with the rule (directory as to time) and give <i>Querubin</i>. Then the three exceptions.',
 			question: 'Is a statutory period for a public officer to act mandatory or directory? Are there exceptions?',
-			verify: '<i>PAFLU v. Secretary of Labor</i> is cited from your earlier guide; I did not check the full text.'
+			verify: '<i>PAFLU v. Secretary of Labor</i>: not checked against the full text.'
 		},
 		{
 			id: 'E8.7',
@@ -513,21 +513,16 @@ export const ch8: Chapter = {
 			text: 'Publication of the notice of initial hearing in a newspaper of general circulation is mandatory; "shall" denotes an imperative, and the Official Gazette is not as widely read. Without it the application for registration cannot be granted; it was dismissed without prejudice to refiling.'
 		},
 		{ kind: 'case', name: 'Querubin v. Court of Appeals', cite: 'G.R. No. L-2581, Dec. 2, 1948 (82 Phil. 226)', text: 'The three-month period for deciding election appeals is directory; dismissing a case merely because time ran out would defeat justice for reasons beyond the parties\' control.' },
-		{ kind: 'case', name: 'Enriquez v. Enriquez', cite: 'G.R. No. 139303, Aug. 25, 2005', text: 'Payment of the appellate docket fees within the period to appeal is mandatory and jurisdictional for perfecting an appeal.', verify: 'Cited from your earlier guide; I did not check the full text.' },
-		{ kind: 'case', name: 'PAFLU v. Secretary of Labor', cite: '27 SCRA 40 (1969)', text: 'A statute fixing the time for a public officer to act is generally directory as to time, unless time is of the essence, the statute has negative words, or the period limits the officer\'s power.', verify: 'Cited from your earlier guide; I did not check the full text.' },
+		{ kind: 'case', name: 'Enriquez v. Enriquez', cite: 'G.R. No. 139303, Aug. 25, 2005', text: 'Payment of the appellate docket fees within the period to appeal is mandatory and jurisdictional for perfecting an appeal.', verify: 'Not checked against the full text.' },
+		{ kind: 'case', name: 'PAFLU v. Secretary of Labor', cite: '27 SCRA 40 (1969)', text: 'A statute fixing the time for a public officer to act is generally directory as to time, unless time is of the essence, the statute has negative words, or the period limits the officer\'s power.', verify: 'Not checked against the full text.' },
 		{
 			kind: 'case',
 			name: 'Marcelino v. Cruz',
 			cite: '121 SCRA 51 (1983)',
 			text: 'Under the 1973 Constitution, the period for lower courts to decide was held directory; a decision rendered after it is valid.',
-			verify: 'Standard citation for this point; not checked against the full text this session.'
+			verify: 'Standard citation for this point; not checked against the full text.'
 		},
 		{ kind: 'case', name: 'Aquino v. Quezon City', cite: 'G.R. Nos. 137534 & 138624, Aug. 3, 2006', text: 'The Sec. 65 notice of delinquency is a mandatory prerequisite to every tax remedy, but direct notice by registered mail suffices, and Sec. 73 does not require actual receipt. See the five-case section.' }
-	],
-	corrections: [
-		{ old: '<i>Director of Lands v. CA</i> "cited in Agpalo §8.06," with no citation.', fix: 'Identified as <i>Director of Lands v. CA</i> (Abistado), G.R. No. 102858, July 28, 1997. Add the P.D. 1529, Sec. 23 proviso: Official Gazette publication confers jurisdiction, but newspaper publication is still mandatory for due process.' },
-		{ old: '"Constitutional time limits for deciding cases: courts have treated them as directory."', fix: 'Qualify: Art. VIII, Sec. 15(4) itself calls them "mandatory" periods, yet commands the court to decide even after they expire, without prejudice to responsibility. So a late decision is valid; the judge may be sanctioned.' },
-		{ old: '<i>Querubin v. CA</i>, 82 Phil. 226 (1948), unconfirmed.', fix: 'Confirmed as G.R. No. L-2581, Dec. 2, 1948.' }
 	],
 
 	caseNote: '<i>Aquino</i> is the Chapter VIII case: it shows a mandatory notice requirement whose purpose can be met by direct notice. <i>Catiis</i> (Rule 110 on aggravating circumstances) and <i>Magtajas</i> ("shall" in Sec. 458) use mandatory language in their reasoning. <i>Corona</i> enforces the forum fixed by statute.',

@@ -310,7 +310,7 @@ export const familyFiliationHtml = [familyInstitution, familyHome, legitimateChi
 
 /** Quick recall for Arts. 149–182, appended at the end of the PFR guide with the other review tools. */
 export const familyFiliationReview = `
-${part('family-filiation-review-tools-arts-149-182', 'Review Tools — Family, Family Home &amp; Filiation (Arts. 149–182)', 'The figures you can be asked to recite on the spot, then a checklist for the night before. Mark each topic studied in the reader as you go.')}
+${part('family-filiation-review-tools-arts-149-182', 'Review Tools — Family, Family Home &amp; Filiation (Arts. 149–182)', 'The figures and periods to recite, and a recall checklist.')}
 
 ${h3('fc-figures', 'Quick recall', 'Numbers and periods')}
 ${table(['Figure', 'Rule', 'Article'], [
@@ -326,7 +326,7 @@ ${table(['Figure', 'Rule', 'Article'], [
 	['<strong>5 years</strong>', 'Impugning legitimation, from accrual of the cause of action', '182']
 ])}
 
-${h3('fc-checklist', 'Quick recall', 'Checklist for the night before')}
+${h3('fc-checklist', 'Quick recall', 'Recall checklist')}
 ${ol([
 	'Recite Art. 150 and name three relatives it excludes',
 	'State the Art. 2035 matters that cannot be compromised',
@@ -349,5 +349,5 @@ ${ol([
 	'State the Art. 177 requisites, including the R.A. 9858 amendment',
 	'Recite the effects of legitimation and who may impugn it'
 ])}
-<p class="rv-verify">⚠ Codal text follows the Rabuya and Tiu reprints and the E.O. 209 text on Lawphil. Case citations were checked against those materials and online digests; confirm G.R. numbers in your casebook before citing them in class.</p>
+<p class="rv-source">Codal text follows the Rabuya and Tiu reprints and the E.O. 209 text on Lawphil.</p>
 `;

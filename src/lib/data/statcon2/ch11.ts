@@ -6,7 +6,7 @@ export const ch11: Chapter = {
 	roman: 'XI',
 	title: 'Constitutional Construction',
 	short: 'Ch. XI — Constitutional Construction',
-	sections: '§§11.01–11.19 (section numbers as used in your earlier guide)',
+	sections: '§§11.01–11.19',
 
 	plain: `The Constitution is the highest law, so everything else must fit it. To read it, start with the <b>words</b> in their ordinary meaning. If the words are unclear, look to the <b>reason</b>: what the framers intended and why. And read the <b>whole</b> document together. Its provisions are presumed <b>mandatory</b> and <b>self-executing</b>, so they work even without a law implementing them.`,
 	overview: `<p>Chapter XI applies the tools of statutory construction to the fundamental law, with adjustments. The Constitution is written by the sovereign people, meant to last, and addressed to every branch of government. So its words are read in their ordinary sense (it is "not primarily a lawyer\'s document"), its purpose is to realize the intent of the framers <i>and the people who ratified it</i>, and its provisions are presumed mandatory and self-executing, the reverse of the cautious presumptions for some statutes.</p>
@@ -208,7 +208,7 @@ export const ch11: Chapter = {
 			basis: 'Agpalo §§11.15, 11.16, 11.19.',
 			why: 'Consistency with the general principles of construction, adjusted for the Constitution\'s supremacy.',
 			when: 'Temporal questions; borrowed provisions.',
-			limits: 'These sections were marked unconfirmed in your earlier guide; check the exact wording.',
+			limits: 'Check the exact wording of these sections in Agpalo.',
 			differs: 'Same logic as "adopted statutes" (§6.28).',
 			example: 'The Bill of Rights\' due process and equal protection clauses, drawn from the U.S. Constitution.'
 		}
@@ -283,7 +283,7 @@ export const ch11: Chapter = {
 			memory: '<b>Whole · Mandatory · Forward · Statcon rules (adapted).</b>',
 			tip: 'Add the fifth presumption from §11.17: provisions are self-executing.',
 			question: 'Enumerate the rules of general application in constitutional construction.',
-			verify: 'Your earlier guide marked §§11.15–11.16 as unconfirmed; check the wording.'
+			verify: 'Check the exact wording of §§11.15–11.16.'
 		},
 		{
 			id: 'E11.5',
@@ -319,7 +319,7 @@ export const ch11: Chapter = {
 		{
 			id: 'E11.7',
 			name: 'Philippine constitutions',
-			source: 'Agpalo §11.01 (as summarized in your earlier guide); standard constitutional history.',
+			source: 'Agpalo §11.01; standard constitutional history.',
 			kind: 'teaching',
 			ordered: true,
 			lead: 'The Philippines has had the following constitutions',
@@ -332,7 +332,7 @@ export const ch11: Chapter = {
 				{ t: 'The 1987 Constitution', d: 'In force.', s: 'the 1987 Constitution' }
 			],
 			memory: '<b>1899 · 1935 · 1943 · 1973 · 1986 · 1987.</b>',
-			tip: 'Your earlier guide omitted 1943; many lists include it. Use your professor\'s list.',
+			tip: 'Many lists include the 1943 (Japanese-sponsored) Constitution; others omit it.',
 			question: 'Enumerate the constitutions the Philippines has had.',
 			verify: 'Confirm whether your course counts the 1943 Constitution.'
 		}
@@ -475,14 +475,8 @@ export const ch11: Chapter = {
 		{ kind: 'case', name: 'Civil Liberties Union v. Executive Secretary', cite: 'G.R. No. 83896, Feb. 22, 1991, 194 SCRA 317', text: 'E.O. 284, which allowed Cabinet members and their deputies to hold multiple government posts, was unconstitutional. Art. VII, Sec. 13 is a stricter, specific rule for the Executive that qualifies Art. IX-B, Sec. 7, par. 2. Provisions on a subject are read together; convention debates are of value but less conclusive than the instrument and the people\'s understanding.' },
 		{ kind: 'case', name: 'Nitafan v. Commissioner of Internal Revenue', cite: '152 SCRA 284 (1987)', text: 'The framers did not intend to exempt members of the Judiciary from income tax; withholding tax on judges\' salaries does not violate the non-diminution clause. The primary task is to ascertain and realize the framers\' and people\'s intent.' },
 		{ kind: 'case', name: 'J.M. Tuason & Co. v. Land Tenure Administration', cite: '31 SCRA 413 (1970)', text: 'Verba legis in constitutional construction: begin with the language; ordinary meaning except technical terms; "that is where we begin."' },
-		{ kind: 'case', name: 'Tañada v. Angara; Kilosbayan v. Morato', cite: '272 SCRA 18 (1997); 246 SCRA 540 (1995)', text: 'Provisions of Art. II (Declaration of Principles and State Policies) are generally not self-executing; they are guidelines for legislation rather than sources of judicially enforceable rights.', verify: 'Standard citations; not checked against the full texts this session.' },
-		{ kind: 'case', name: 'Oposa v. Factoran', cite: '224 SCRA 792 (1993)', text: 'The right to a balanced and healthful ecology (Art. II, Sec. 16) was treated as enforceable without implementing legislation, an exception to the general character of Art. II.', verify: 'Standard citation; not checked against the full text this session.' }
-	],
-	corrections: [
-		{ old: '<i>Francisco v. House</i>: "On that basis it determined when impeachment is \'initiated\'... (Read the full case for the exact holding.)"', fix: 'Holding filled in: proceedings are initiated by the filing of a verified complaint and its referral to the House Committee on Justice; the second complaint against Chief Justice Davide was barred by the one-year rule.' },
-		{ old: '<i>Civil Liberties Union</i> and <i>Nitafan</i> facts and rulings marked unconfirmed.', fix: 'Both are consistent with the decisions as reported: E.O. 284 unconstitutional; judges\' salaries subject to income tax.' },
-		{ old: 'List of Philippine constitutions omitted the 1943 Constitution.', fix: 'Many lists include the 1943 (Japanese-sponsored) Constitution. Use your professor\'s list.' },
-		{ old: '"Constitutional provisions: presumed self-executing" with no counterweight.', fix: 'Added: Art. II principles are generally not self-executing (<i>Tañada v. Angara</i>; <i>Kilosbayan v. Morato</i>), with exceptions such as <i>Oposa v. Factoran</i>.' }
+		{ kind: 'case', name: 'Tañada v. Angara; Kilosbayan v. Morato', cite: '272 SCRA 18 (1997); 246 SCRA 540 (1995)', text: 'Provisions of Art. II (Declaration of Principles and State Policies) are generally not self-executing; they are guidelines for legislation rather than sources of judicially enforceable rights.', verify: 'Standard citations; not checked against the full texts.' },
+		{ kind: 'case', name: 'Oposa v. Factoran', cite: '224 SCRA 792 (1993)', text: 'The right to a balanced and healthful ecology (Art. II, Sec. 16) was treated as enforceable without implementing legislation, an exception to the general character of Art. II.', verify: 'Standard citation; not checked against the full text.' }
 	],
 
 	caseNote: 'None of the five cases is a constitutional-construction case, but <i>Magtajas</i> touches Chapter XI directly: it rejected local autonomy as a ground for an ordinance defying a statute, and noted that the Constitution does not prohibit gambling. <i>Catiis</i> applies the constitutional right to bail directly.',

@@ -211,7 +211,7 @@ export const r118: RuleChapter = {
 		{
 			id: 'E118.7',
 			name: 'When criminal liability may be compromised',
-			source: 'Civil Code Art. 2034; Tiu, p. 171 (citing Prof. Salvador)',
+			source: 'Civil Code Art. 2034; Tiu, p. 171',
 			kind: 'notes',
 			lead: 'As a rule, criminal liability cannot be compromised; exceptions provided by law include',
 			items: [

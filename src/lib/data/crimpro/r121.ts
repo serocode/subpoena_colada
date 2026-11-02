@@ -49,7 +49,7 @@ export const r121: RuleChapter = {
 			reqs: `Newly discovered evidence must be: (1) discovered after trial; (2) not discoverable and producible at trial with reasonable diligence; (3) material, not merely cumulative, corroborative or impeaching; and (4) of such weight that it would probably change the judgment.`,
 			who: `The accused; the trial court.`,
 			when: `Before finality.`,
-			exceptions: `In the Court of Appeals, only newly discovered evidence is a ground (Rule 124, Sec. 14). Generally no new trial in the Supreme Court, though it is left to the Court's discretion (Tiu, citing Prof. Salvador).`,
+			exceptions: `In the Court of Appeals, only newly discovered evidence is a ground (Rule 124, Sec. 14). Generally no new trial in the Supreme Court, though it is left to the Court's discretion (Tiu).`,
 			effect: `If a ground is shown, "the court shall grant" — the grant is mandatory once a ground is established, though whether the ground exists is for the court to weigh.`,
 			hypo: `After conviction for homicide, the accused finds CCTV footage from a store across the street, which the store owner had kept abroad and only produced when he returned. It shows someone else firing the gun. All four requisites are present.`,
 			trap: `Evidence that was available at trial but not presented because of counsel's strategy is not "newly discovered." And evidence that only impeaches a witness's credibility rarely "would probably change the judgment."`,

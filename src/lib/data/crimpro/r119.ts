@@ -82,7 +82,6 @@ export const r119: RuleChapter = {
 			text: `For the first twelve months following September 15, 1998, the arraignment-to-trial limit was 180 days; for the second twelve months, 120 days; for the third, 80 days.`,
 			plain: `Transitional limits after the Speedy Trial Act: 180, then 120, then 80 days.`,
 			trap: `Tiu presents "80 days from arraignment to trial" as a working limit; strictly, Sec. 6 was a three-year transition. The standing limits are Rule 116, Sec. 1(g) (arraignment within 30 days) and Sec. 1 of this Rule (trial within 30 days of the pre-trial order).`,
-			verify: `Confirm with your professor whether the 80-day figure is tested.`
 		},
 		{
 			n: '7',
@@ -181,7 +180,7 @@ export const r119: RuleChapter = {
 			title: 'Discharge of accused operates as acquittal',
 			text: `"The order indicated in the preceding section shall amount to an acquittal of the discharged accused and shall be a bar to future prosecution for the same offense, unless the accused fails or refuses to testify against his co-accused in accordance with his sworn statement constituting the basis for the discharge."`,
 			plain: `Discharge = acquittal, unless he backs out of testifying.`,
-			effect: `Double jeopardy bars reprosecution — subject to his testifying as promised (Bogo-Medellin Milling v. Son, in Tiu). Tiu (citing Prof. Salvador) advises that he be arraigned first so jeopardy attaches.`,
+			effect: `Double jeopardy bars reprosecution — subject to his testifying as promised (Bogo-Medellin Milling v. Son, in Tiu). Tiu advises that he be arraigned first so jeopardy attaches.`,
 			hypo: `The discharged accused testifies but later recants on cross. If he failed to testify "in accordance with his sworn statement," the State may prosecute him.`
 		},
 		{

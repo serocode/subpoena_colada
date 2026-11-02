@@ -6,7 +6,7 @@ export const ch9: Chapter = {
 	roman: 'IX',
 	title: 'Prospective and Retroactive Statutes',
 	short: 'Ch. IX — Prospective & Retroactive Statutes',
-	sections: '§§9.01–9.27 (section numbers as used in your earlier guide)',
+	sections: '§§9.01–9.27',
 
 	plain: `Laws look forward: they govern what happens <b>after</b> they take effect. A law reaches back to past acts or rights only if the legislature clearly says so, or if it is the kind of law that naturally reaches back: procedural laws, curative laws, and penal laws that help the accused. Even then, it cannot take away vested rights, impair contracts, deny due process, or punish past acts after the fact (ex post facto).`,
 	overview: `<p><b>Part A (§§9.01–9.05)</b> defines retroactive laws, states the presumption that laws are prospective (Art. 4, Civil Code), and sets the constitutional limits on retroactivity. <b>Part B (§§9.06–9.16)</b> covers statutes given prospective effect: penal laws (with the ban on ex post facto laws and bills of attainder, and the exception for laws favorable to the accused), substantive laws, vested rights, jurisdiction and contracts. <b>Part C (§§9.17–9.27)</b> covers statutes given retroactive effect: procedural, curative and remedial laws, and laws on prescription. The chapter closes with the effect of judicial decisions: the Supreme Court\'s interpretation is part of the law from its enactment, but a doctrine that is <i>overruled</i> is changed only prospectively.</p>
@@ -160,7 +160,7 @@ export const ch9: Chapter = {
 			basis: 'Art. 22, RPC; Agpalo §9.09.',
 			why: 'Justice and humanity: if the State now thinks the act deserves less punishment, it should not keep punishing it more.',
 			when: 'A later law reduces the penalty, decriminalizes the act, removes subsidiary imprisonment, adds mitigating or extinguishing grounds, or shortens prescription.',
-			limits: 'Not applicable (1) to a habitual criminal (as defined in Art. 62(5)), (2) where the new law expressly says it does not apply to pending cases, and, per your earlier guide, (3) where the accused himself invokes the prior law. If the convict is already serving sentence, the remedy recognized in jurisprudence is a petition for habeas corpus.',
+			limits: 'Not applicable (1) to a habitual criminal (as defined in Art. 62(5)), (2) where the new law expressly says it does not apply to pending cases, and (3) where the accused himself invokes the prior law. If the convict is already serving sentence, the remedy recognized in jurisprudence is a petition for habeas corpus.',
 			differs: 'This is the mirror image of the ex post facto ban: unfavorable laws cannot reach back; favorable ones do.',
 			example: 'Theft of property worth ₱15,000 is moved to a lighter penalty bracket by a new law: a first-time offender serving the old, heavier sentence may seek release once he has served the new maximum.'
 		},
@@ -253,7 +253,7 @@ export const ch9: Chapter = {
 			memory: '<b>"Criminalize · Aggravate · Punish more · Prove less · Penalize as civil · Protection removed."</b>',
 			tip: 'Add: the prohibition is limited to criminal or penal matters. Common mistake: listing an unfavorable civil law as ex post facto.',
 			question: 'What is an ex post facto law? Enumerate its kinds.',
-			verify: 'Wording follows the standard formulation. Your earlier guide attributed all six to <i>Calder v. Bull</i>; only the first four come from it. Check the exact text in <i>Kay Villegas Kami</i> or your book before quoting.'
+			verify: 'Wording follows the standard formulation. Only the first four come from <i>Calder v. Bull</i>; check the exact text in <i>Kay Villegas Kami</i> before quoting.'
 		},
 		{
 			id: 'E9.3',
@@ -270,7 +270,7 @@ export const ch9: Chapter = {
 			memory: '<b>Legislature · Singles out · Punishes · No trial.</b>',
 			tip: 'Lead with the essence from <i>Ferrer</i>: "the substitution of a legislative for a judicial determination of guilt." Add that a bill of attainder is usually also ex post facto, so if a law is not ex post facto, that is persuasive it is not a bill of attainder.',
 			question: 'What is a bill of attainder? Why was the Anti-Subversion Act held not to be one?',
-			verify: 'Your earlier guide listed the elements as "singling out of a definite minority, imposition of a burden, legislative intent, and retroactive application to past conduct." This study grouping follows the definition in <i>Ferrer</i>; check the decision\'s exact wording.'
+			verify: 'Another common listing of the elements: "singling out of a definite minority, imposition of a burden, legislative intent, and retroactive application to past conduct." This grouping follows the definition in <i>Ferrer</i>; check the decision\'s exact wording.'
 		},
 		{
 			id: 'E9.4',
@@ -282,12 +282,12 @@ export const ch9: Chapter = {
 			items: [
 				{ t: 'To a habitual criminal (habitual delinquent)', d: 'Art. 22 excludes one who is a habitual criminal as defined in Art. 62, Rule 5: within ten years from release or last conviction for serious or less serious physical injuries, robo, hurto, estafa or falsification, he is found guilty of any of them a third time or oftener.', s: 'when the offender is a habitual criminal under Art. 62(5)' },
 				{ t: 'When the new law expressly provides that it shall not apply to pending cases', d: 'The legislature may limit the benefit.', s: 'when the new law expressly excludes pending actions' },
-				{ t: 'When the accused invokes the prior law instead', d: 'The benefit is the accused\'s to claim (per your earlier guide).', s: 'when the accused elects to be governed by the prior law' }
+				{ t: 'When the accused invokes the prior law instead', d: 'The benefit is the accused\'s to claim.', s: 'when the accused elects to be governed by the prior law' }
 			],
 			memory: '<b>Habitual · Expressly excluded · Elects old law.</b>',
 			tip: 'The first is in the text of Art. 22; quote it. Also state the remedy if already serving sentence: a petition for habeas corpus.',
 			question: 'When is a penal law favorable to the accused not given retroactive effect?',
-			verify: 'The third exception comes from your earlier guide; confirm it in your book.'
+			verify: 'Confirm the third exception in Agpalo.'
 		},
 		{
 			id: 'E9.5',
@@ -562,17 +562,11 @@ export const ch9: Chapter = {
 			cite: 'G.R. No. 100776, Oct. 28, 1993',
 			text: 'Ministry of Justice Circular No. 4 (Dec. 15, 1981) said guarantee checks were outside B.P. 22; Circular No. 12 (Aug. 8, 1984) reversed it for checks issued after its date; <i>Que v. People</i> (Sept. 21, 1987) held guarantee checks covered. Co, who issued a guarantee check in 1983, was acquitted: <i>Que</i> could not be applied retroactively to his prejudice.'
 		},
-		{ kind: 'case', name: 'Subido v. Sandiganbayan', cite: 'G.R. No. 122641, Jan. 20, 1997', text: 'R.A. 7975, which amended P.D. 1606 on the Sandiganbayan\'s jurisdiction and procedure, is procedural and curative and may be applied to pending cases where no vested or contractual right is impaired.', verify: 'Citation as commonly reported; not checked against the full text this session.' },
+		{ kind: 'case', name: 'Subido v. Sandiganbayan', cite: 'G.R. No. 122641, Jan. 20, 1997', text: 'R.A. 7975, which amended P.D. 1606 on the Sandiganbayan\'s jurisdiction and procedure, is procedural and curative and may be applied to pending cases where no vested or contractual right is impaired.', verify: 'Citation as commonly reported; not checked against the full text.' },
 		{ kind: 'case', name: 'People v. Ferrer', cite: '48 SCRA 382 (1972)', text: 'The Anti-Subversion Act is not a bill of attainder: guilt must still be judicially established, and the Act operates prospectively (membership after its effectivity).' },
 		{ kind: 'case', name: 'In re Kay Villegas Kami, Inc.', cite: 'G.R. No. L-32485, Oct. 22, 1970, 35 SCRA 429', text: 'Cited for the kinds of ex post facto laws; Sec. 8 of R.A. 6132 was challenged as ex post facto.', verify: 'Check the exact list in the decision.' },
 		{ kind: 'case', name: 'Yapdiangco v. Buencamino', cite: 'G.R. No. L-28841, June 24, 1983', text: 'An information for a light offense filed on the 61st day, because the 60th fell on a Sunday, was filed too late; a Sunday or legal holiday does not interrupt or extend the prescriptive period for criminal actions.' },
-		{ kind: 'case', name: 'People v. Moran', cite: '44 Phil. 387 (1923)', text: 'Statutes of limitation on criminal prosecutions are acts of grace, liberally construed in favor of the accused.', verify: 'Standard citation; not checked against the full text this session.' }
-	],
-	corrections: [
-		{ old: 'Art. 22, RPC quoted as "... although at the time of the <b>application</b> of such laws a final sentence has been pronounced ..."', fix: 'The text reads "<b>publication</b>": "...although at the time of the publication of such laws a final sentence has been pronounced and the convict is serving the same" (checked against the RPC text).' },
-		{ old: 'The six kinds of ex post facto laws attributed to "Calder v. Bull, as used in our cases."', fix: '<i>Calder v. Bull</i> gave the first four; Philippine decisions (e.g., <i>In re Kay Villegas Kami</i>) state all six.' },
-		{ old: '"For prescription of crimes, the first day is included in the count (an exception to the Art. 13 Civil Code rule)."', fix: 'Removed; I could not confirm it, and it conflicts with the general rule of Art. 13. What is settled (<i>Yapdiangco v. Buencamino</i>) is that a Sunday or holiday does not extend the prescriptive period for crimes. Check §§9.24–9.27 in your book.' },
-		{ old: '<i>Co v. CA</i>: protected reliance "between Dec. 15, 1981 and Sept. 21, 1987."', fix: 'Co issued his check in 1983, while Circular No. 4 was in force; Circular No. 12 (Aug. 8, 1984) had already reversed it for later checks before <i>Que</i> (1987). Don\'t recite the 1981–1987 window as the holding; read the decision for the exact period.' }
+		{ kind: 'case', name: 'People v. Moran', cite: '44 Phil. 387 (1923)', text: 'Statutes of limitation on criminal prosecutions are acts of grace, liberally construed in favor of the accused.', verify: 'Standard citation; not checked against the full text.' }
 	],
 
 	caseNote: 'None of the five assigned cases turns on retroactivity. Don\'t force one into a Chapter IX answer; use the chapter\'s own cases (<i>Jabinal</i>, <i>Co v. CA</i>, <i>Subido</i>, <i>Ferrer</i>, <i>Yapdiangco</i>). The one point of contact, flagged for checking, is below.',
